@@ -1,0 +1,19 @@
+{
+    "uferService" : {
+        "_id": {
+            "$oid": "5fd0f16eea6fcf269994fc7a"
+        },
+        "name": "Ufer Gold",
+        "description": "Ufer Gold offers the most luxury experience in the entire galaxy. Includes all the features and amenities you can imagine.",
+        "category": {
+            "name": "",
+            "discount":""
+        },
+        "price": 12000,
+        "privacy": "Private",
+        "seats": "King Size",
+        "propulsion": "Photon Engine",
+        "top_speed": 1080000000,
+        "amenities": ["WiFi", "Bluetooth", "Tinted Screens", "HiFi Audio System", "A/C", "Champagne Bottle", "Water", "Snacks"]
+    }
+}

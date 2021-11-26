@@ -1,5 +1,3 @@
-const { mod } = require("prelude-ls");
-
 let journey = {
     init: function(startPoint, endPoint, distance) {
         this.startPoint = startPoint;

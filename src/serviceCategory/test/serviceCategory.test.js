@@ -1,6 +1,6 @@
 const { expect } = require('@jest/globals');
 
-const premiumCategory = require('../premiumCategory.js');
+const premiumCategory = require('../types/premiumCategory.js');
 
 // BASIC TEST
 test('test initialization of the serviceCategory proto', () => {

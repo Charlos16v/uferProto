@@ -5,11 +5,16 @@
         },
         "name": "Ufer Gold",
         "description": "Ufer Gold offers the most luxury experience in the entire galaxy. Includes all the features and amenities you can imagine.",
+        "price": 12000,
+        "journey": {
+            "startPoint": "MurciaGalaxy",
+            "endPoint": "Lepe",
+            "distance": 9999
+        },
         "category": {
             "name": "",
             "discount":""
         },
-        "price": 12000,
         "amenities": ["WiFi", "Bluetooth", "Tinted Screens", "HiFi Audio System", "A/C", "Champagne Bottle", "Water", "Snacks"]
     },
 

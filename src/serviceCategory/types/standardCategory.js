@@ -1,4 +1,4 @@
-let serviceCategoryPrototype = require('./serviceCategory.js');
+let serviceCategoryPrototype = require('../serviceCategory.js');
 
 let standardCategory = {
     init: function() {

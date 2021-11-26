@@ -1,7 +1,7 @@
 let ufoService = require('./ufoService/ufoService.js');
-let standardCategory = require('./serviceCategory/standardCategory.js');
-let comfortCategory = require('./serviceCategory/comfortCategory.js');
-let premiumCategory = require('./serviceCategory/premiumCategory.js');
+let standardCategory = require('./serviceCategory/types/standardCategory.js');
+let comfortCategory = require('./serviceCategory/types/comfortCategory.js');
+let premiumCategory = require('./serviceCategory/types/premiumCategory.js');
 
 /**
  * Standard, Comfort y Premium son "hijas" de Category, 

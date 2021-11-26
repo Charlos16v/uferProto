@@ -10,10 +10,16 @@
             "discount":""
         },
         "price": 12000,
+        "amenities": ["WiFi", "Bluetooth", "Tinted Screens", "HiFi Audio System", "A/C", "Champagne Bottle", "Water", "Snacks"]
+    },
+
+
+
+    
+    "notImplemented" :{
         "privacy": "Private",
         "seats": "King Size",
         "propulsion": "Photon Engine",
-        "top_speed": 1080000000,
-        "amenities": ["WiFi", "Bluetooth", "Tinted Screens", "HiFi Audio System", "A/C", "Champagne Bottle", "Water", "Snacks"]
+        "top_speed": 1080000000
     }
 }

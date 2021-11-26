@@ -16,7 +16,7 @@
     "url": "https://github.com/Charlos16v/uferProto/issues"
   },
   "homepage": "https://github.com/Charlos16v/uferProto#readme",
-  "dependencies": {
+  "devDependencies": {
     "jest": "^27.3.1"
   }
 }

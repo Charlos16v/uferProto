@@ -12,7 +12,7 @@ let ufoServicePrototype = {
 
     // Getters
     getName: function() {
-        return("I'am " + this.name);
+        return this.name;
     },
     getDescription: function() {
         return this.description;
@@ -21,7 +21,7 @@ let ufoServicePrototype = {
         return this.journey;
     },
     getCategory: function() {
-        return this.category;
+        return (this.category);
     },
     getPrice: function() {
         return this.price;
@@ -29,7 +29,6 @@ let ufoServicePrototype = {
     getAmenities: function() {
         return this.amenities;
     },
-
     calculatePrice() {
 
     }

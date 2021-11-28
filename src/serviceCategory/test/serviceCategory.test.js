@@ -29,20 +29,20 @@ describe('scope tests serviceCategory prototype', () => {
         expect(randomValue).toBeLessThanOrEqual(10);
     });
 
-    test('test generateDiscount() method from serviceCategory proto', () => {
+    test('test getDiscount() method from serviceCategory proto', () => {
         // La logica del negocio dice que en este caso premiumCategory 
         // deberia devolvernos un valor aleatorio entre 10 y 40, SOLO si nos encontramos
         // en el mes de descuento(Diciembre).
 
         // CASO SE CUMPLEN LAS CONDICIONES.
         let dateWithDiscount = new Date(2021, 11, 15);
-        let randomDiscount = category.generateDiscount(dateWithDiscount);
+        let randomDiscount = category.getDiscount(dateWithDiscount);
         expect(randomDiscount).toBeGreaterThanOrEqual(10);
         expect(randomDiscount).toBeLessThanOrEqual(40);
 
         // CASO NO SE CUMPLEN LAS CONDICIONES.
         let dateWithoutDiscount = new Date(2021, 4, 31);
-        expect(category.generateDiscount(dateWithoutDiscount)).toBe(0);
+        expect(category.getDiscount(dateWithoutDiscount)).toBe(0);
     });
 
 })

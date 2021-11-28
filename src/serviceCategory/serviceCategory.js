@@ -26,7 +26,7 @@ let serviceCategoryPrototype = {
     getRandomInteger: function(min, max) {
         return Math.floor(Math.random() * (max - min) ) + min;
     },
-    generateDiscount: function (date) {
+    getDiscount: function (date) {
         if (this.isDiscountMonth(date)) return this.getRandomInteger(this.getMinDiscount(), this.getMaxDiscount());
         return 0;
     }

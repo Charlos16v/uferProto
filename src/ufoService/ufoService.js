@@ -6,6 +6,7 @@ let ufoServicePrototype = {
         this.journey = journey;
         this.category = category;
         this.amenities = amenities;
+        this.BASEPRICE = 7;
         
         return this;
     },
@@ -28,6 +29,9 @@ let ufoServicePrototype = {
     },
     getAmenities: function() {
         return this.amenities;
+    },
+    getBASEPRICE: function() {
+        return this.BASEPRICE;
     },
     calculatePrice() {
 

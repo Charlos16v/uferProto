@@ -3,7 +3,6 @@ let serviceCategoryPrototype = {
         this.name = name;
         this.minDiscount = minDiscount;
         this.maxDiscount = maxDiscount;
-        this.BASEPRICE = 20;
 
         return this;
     },

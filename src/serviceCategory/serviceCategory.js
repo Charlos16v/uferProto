@@ -1,12 +1,20 @@
 let serviceCategoryPrototype = {
-    init: function(name, discount) {
+    init: function(name, minDiscount, maxDiscount) {
         this.name = name;
-        this.discount = discount;
+        this.minDiscount = minDiscount;
+        this.maxDiscount = maxDiscount;
+        this.BASEPRICE = 20;
 
         return this;
     },
     getName: function () {
         return this.name;
+    },
+    getMinDiscount: function () {
+        return this.minDiscount;
+    },
+    getMaxDiscount: function () {
+        return this.maxDiscount;
     },
     isDiscountMonth: function(date = Date.now()) {
         // Los meses en las fechas de JavaScript van de 0 a 11.
@@ -16,10 +24,12 @@ let serviceCategoryPrototype = {
         let actualMonth = actualDate.getMonth();
         return actualMonth == 11 ? true : false;
     },
-    calculateDiscount: function () {
-        return "This " + this.getName() + 
-                " service category offers " + 
-                this.discount * 100 + "k discount!";
+    getRandomInteger: function(min, max) {
+        return Math.floor(Math.random() * (max - min) ) + min;
+    },
+    generateDiscount: function (date) {
+        if (this.isDiscountMonth(date)) return this.getRandomInteger(this.getMinDiscount(), this.getMaxDiscount());
+        return 0;
     }
 };
 

@@ -1,17 +1,18 @@
 let ufoServicePrototype = {
-    init: function(name, description, price, journey, category, amenities){
+    init: function(name, description, journey, category, amenities){
         this.name = name;
         this.description = description;
-        this.price = price;
         this.journey = journey;
         this.category = category;
         this.amenities = amenities;
-        this.BASEPRICE = 7;
+        this.price;
+        //! MOVER A CATEGORY??
+        this.KEYMETERPRICE = 7;
         
         return this;
     },
 
-    // Getters
+    //! Getters necesarios??
     getName: function() {
         return this.name;
     },
@@ -22,7 +23,7 @@ let ufoServicePrototype = {
         return this.journey;
     },
     getCategory: function() {
-        return (this.category);
+        return this.category;
     },
     getPrice: function() {
         return this.price;
@@ -33,8 +34,26 @@ let ufoServicePrototype = {
     getBASEPRICE: function() {
         return this.BASEPRICE;
     },
-    calculatePrice() {
 
+    // Setters
+    setPrice: function(price) {
+        this.price = price;
+    },
+
+    // Business logic.
+    calculatePrice: function() {
+        let distance = this.getJourney()?.getDistance();
+        let discountPercentage = this.getCategory()?.getDiscount();
+
+        // Precio sin descontar descuento.
+        var price = (distance * this.KEYMETERPRICE);
+        
+        if (discountPercentage < 0) {
+            // Si hay descuento se calcula y se le resta al precio.
+            let discountQuantity = price * (discountPercentage / 100);
+            this.setPrice(price - discountQuantity);
+        }
+        this.setPrice(price);
     }
     
 };

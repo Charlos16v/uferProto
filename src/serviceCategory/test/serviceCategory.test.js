@@ -18,8 +18,22 @@ describe('scope tests serviceCategory prototype', () => {
     });
 
     test('test of isDiscountMonth() method of serviceCategory proto', () => {
-        expect(category.isDiscountMonth(new Date(2021, 4, 31))).toBeFalsy(); // 
-        expect(category.isDiscountMonth(new Date(2021, 11, 15))).toBeTruthy(); // Caso diciembre
+        /*
+        Mi logica es que solo aplico este tipo de descuentos en Diciembre, mes 11 en JS Date.
+
+        Hago mock de Date.now justo antes de la ejecucion del metodo isDiscountMonth()
+        ya que acabara accediendo a Date.now, aqui ya le paso el valor que quiero tener
+        a la hora que llegue ese expect.
+        */ 
+       
+
+        // CASO MAYO, NO DEBERIA.
+        Date.now = jest.fn(() => new Date(2021, 4, 31));
+        expect(category.isDiscountMonth()).toBeFalsy(); // 
+
+        // CASO DICIEMBRE, SI DEBERIA.
+        Date.now = jest.fn(() => new Date(2021, 11, 15));
+        expect(category.isDiscountMonth()).toBeTruthy();
     });
 
     test('test getRandomInteger() method from serviceCategory proto', () => {
@@ -36,12 +50,16 @@ describe('scope tests serviceCategory prototype', () => {
 
         // CASO SE CUMPLEN LAS CONDICIONES.
         let dateWithDiscount = new Date(2021, 11, 15);
+
+        Date.now = jest.fn(() => dateWithDiscount);
         let randomDiscount = category.getDiscount(dateWithDiscount);
         expect(randomDiscount).toBeGreaterThanOrEqual(10);
         expect(randomDiscount).toBeLessThanOrEqual(40);
 
         // CASO NO SE CUMPLEN LAS CONDICIONES.
         let dateWithoutDiscount = new Date(2021, 4, 31);
+
+        Date.now = jest.fn(() => dateWithoutDiscount);
         expect(category.getDiscount(dateWithoutDiscount)).toBe(0);
     });
 

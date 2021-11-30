@@ -15,11 +15,10 @@ let serviceCategoryPrototype = {
     getMaxDiscount: function () {
         return this.maxDiscount;
     },
-    isDiscountMonth: function(date = Date.now()) {
+    isDiscountMonth: function() {
         // Los meses en las fechas de JavaScript van de 0 a 11.
-        // Parametro default para poder testear pasando valores fijos.
         // Metodo que duelve true o false dependiendo si no encontramos en diciembre o no.
-        let actualDate = new Date(date);
+        let actualDate = Date.now();
         let actualMonth = actualDate.getMonth();
         return actualMonth == 11 ? true : false;
     },

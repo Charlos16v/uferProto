@@ -52,7 +52,7 @@ describe('scope tests serviceCategory prototype', () => {
         let dateWithDiscount = new Date(2021, 11, 15);
 
         Date.now = jest.fn(() => dateWithDiscount);
-        let randomDiscount = category.getDiscount(dateWithDiscount);
+        let randomDiscount = category.getDiscount();
         expect(randomDiscount).toBeGreaterThanOrEqual(10);
         expect(randomDiscount).toBeLessThanOrEqual(40);
 
@@ -60,7 +60,7 @@ describe('scope tests serviceCategory prototype', () => {
         let dateWithoutDiscount = new Date(2021, 4, 31);
 
         Date.now = jest.fn(() => dateWithoutDiscount);
-        expect(category.getDiscount(dateWithoutDiscount)).toBe(0);
+        expect(category.getDiscount()).toBe(0);
     });
 
 })

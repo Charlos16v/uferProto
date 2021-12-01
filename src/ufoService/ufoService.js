@@ -6,6 +6,7 @@ let ufoServicePrototype = {
         this.category = category;
         this.amenities = amenities;
         this.price;
+        this.discountByCategory;
         //! MOVER A CATEGORY??
         this.KEYMETERPRICE = 7;
         
@@ -41,9 +42,23 @@ let ufoServicePrototype = {
     },
 
     // Business logic.
-    calculatePrice: function() {
-        let distance = this.getJourney()?.getDistance();
+    getDiscount: function(){
+        // Obtenemos el valor del porcentaje desde el proto categoria.
         let discountPercentage = this.getCategory()?.getDiscount();
+        
+        // Setteamos el valor en la propiedad discountByCategory.
+        this.discountByCategory = discountPercentage;
+
+        // Devolvemos el valor ya que va a ser usado posteriormente en calculatePrice()
+        // pero tambien nos interesa que el valor sea persistido en el objeto del servicio.
+        return this.discountByCategory;
+    },
+    getDistance: function(){
+        return this.getJourney()?.getDistance();
+    },
+    calculatePrice: function() {
+        let distance = this.getDistance();
+        let discountPercentage = this.getDiscount();
 
         // Precio sin descontar descuento.
         var price = (distance * this.KEYMETERPRICE);

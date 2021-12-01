@@ -28,6 +28,9 @@ let serviceCategoryPrototype = {
     getDiscount: function () {
         if (this.isDiscountMonth()) return this.getRandomInteger(this.minDiscount, this.maxDiscount);
         return 0;
+    },
+    getQuantityToDiscount(price, discountPercentage) {
+        return price * (discountPercentage / 100);
     }
 };
 

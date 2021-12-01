@@ -70,7 +70,7 @@ let ufoServicePrototype = {
         
         if (discountPercentage < 0) {
             // Si hay descuento se calcula y se le resta al precio.
-            let discountQuantity = price * (discountPercentage / 100);
+            let discountQuantity = this.getCategory?.getQuantityToDiscount();
             this.setPrice(price - discountQuantity);
         }
         this.setPrice(price);

@@ -63,6 +63,15 @@ describe('scope tests serviceCategory prototype', () => {
         expect(category.getDiscount()).toBe(0);
     });
 
+    test('test getQuantityToDiscount() method from serviceCategory proto', () => {
+        // A partir de un precio y una porcentaje de descuento, devuelve
+        // la cantidad a restar sobre el precio con porcentaje indicado.
+
+        expect(category.getQuantityToDiscount(100, 40)).toBe(40);
+        expect(category.getQuantityToDiscount(1000, 22)).toBe(220);
+        expect(category.getQuantityToDiscount(700, 33)).toBe(231);
+    });
+
 })
 
 

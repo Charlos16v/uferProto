@@ -46,12 +46,12 @@ describe('scope tests serviceCategory prototype', () => {
         // En este caso al ser categoria Premium y estar en 
         // diciembre se deberia haber aplicado entre el 10% y el 40%
         // de descuento sobre el precio del servicio
-        // (420 con el 40% y 630 con el 10% aplicados).
-        // Por lo que nuestro margen de resultados validos esta entre 420 y 630.
+        // (440 con el 40% y 670 con el 10% aplicados).
+        // Por lo que nuestro margen de resultados validos esta entre 440 y 670.
 
 
-        expect(ufer.getPrice()).toBeGreaterThanOrEqual(420); 
-        expect(ufer.getPrice()).toBeGreaterThanOrEqual(630);
+        expect(ufer.getPrice()).toBeGreaterThanOrEqual(440); 
+        expect(ufer.getPrice()).toBeGreaterThanOrEqual(670);
 
         
         // CASO SE NO APLICA DESCUENTO AL NO SER DICIEMBRE.
@@ -59,7 +59,7 @@ describe('scope tests serviceCategory prototype', () => {
         Date.now = jest.fn(() => dateWithoutDiscount);
         
         ufer.calculatePrice();
-        expect(ufer.getPrice()).toBe(7000);
+        expect(ufer.getPrice()).toBe(7040);
     });
 
 })

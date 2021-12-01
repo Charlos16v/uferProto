@@ -7,6 +7,8 @@ let ufoServicePrototype = {
         this.amenities = amenities;
         this.price;
         this.discountByCategory;
+        this.KEYBASECOST = 40;
+
         //! MOVER A CATEGORY??
         this.KEYMETERPRICE = 7;
         
@@ -32,11 +34,14 @@ let ufoServicePrototype = {
     getAmenities: function() {
         return this.amenities;
     },
-    getBASEPRICE: function() {
-        return this.BASEPRICE;
+    getKEYMETERPRICE: function() {
+        return this.KEYMETERPRICE;
+    },
+    getKEYBASECOST: function() {
+        return this.KEYBASECOST;
     },
 
-    // Setters
+    //! Setters necesarios??
     setPrice: function(price) {
         this.price = price;
     },
@@ -61,7 +66,7 @@ let ufoServicePrototype = {
         let discountPercentage = this.getDiscount();
 
         // Precio sin descontar descuento.
-        var price = (distance * this.KEYMETERPRICE);
+        var price = this.getKEYBASECOST() + (distance * this.getKEYMETERPRICE());
         
         if (discountPercentage < 0) {
             // Si hay descuento se calcula y se le resta al precio.

@@ -12,8 +12,9 @@
             "distance": 9999
         },
         "category": {
-            "name": "",
-            "discount":""
+            "name": "Premium",
+            "minDiscount": 10,
+            "maxDiscount": 40
         },
         "amenities": ["WiFi", "Bluetooth", "Tinted Screens", "HiFi Audio System", "A/C", "Champagne Bottle", "Water", "Snacks"]
     },

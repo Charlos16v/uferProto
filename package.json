@@ -3,6 +3,8 @@
     "jest": "^27.3.1"
   },
   "scripts": {
-    "debug": "node ./src/main.js"
+    "debug": "node ./src/main.js",
+    "test": "jest",
+    "coverage": "jest --coverage"
   }
 }

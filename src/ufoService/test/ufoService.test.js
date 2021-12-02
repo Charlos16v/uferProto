@@ -49,25 +49,28 @@ describe('scope tests serviceCategory prototype', () => {
         Date.now = jest.fn(() => dateWithDiscount);
         
         // Aun no tiene la propiedad.
-        expect(category).not.toHaveProperty('applyDiscount');
+        expect(ufer.getCategory().hasOwnProperty('applyDiscount')).toBeFalsy();
+        expect(ufer.getCategory()).not.toHaveProperty('applyDiscount');
 
+        //! En los tests se tiene que pasar pero prepareDiscount() actua en el momento
+        //! de settear la categoria en el proto uferService.
         ufer.prepareDiscount(category);
 
         // Una vez ejecutado el closure si la tiene.
-        expect(category).toHaveProperty('applyDiscount');
+        expect(ufer.getCategory()).toHaveProperty('applyDiscount');
 
         // Aun no tiene la propiedad la creara applyDiscount().
-        expect(category).not.toHaveProperty('discountPercentage');
+        expect(ufer.getCategory()).not.toHaveProperty('discountPercentage');
 
-        category.applyDiscount()
+        ufer.getCategory().applyDiscount()
 
         // Ahora si que deberia tenerla.
-        expect(category).toHaveProperty('discountPercentage');
+        expect(ufer.getCategory()).toHaveProperty('discountPercentage');
 
         // En este caso esta aplicando categoria premium por lo que
         // el descuento esta entre 10 y 40.
-        expect(category.discountPercentage).toBeGreaterThanOrEqual(10);
-        expect(category.discountPercentage).toBeLessThanOrEqual(40);
+        expect(ufer.getCategory().discountPercentage).toBeGreaterThanOrEqual(10);
+        expect(ufer.getCategory().discountPercentage).toBeLessThanOrEqual(40);
 
 
         
@@ -75,26 +78,31 @@ describe('scope tests serviceCategory prototype', () => {
         Date.now = jest.fn(() => dateWithoutDiscount);
         
         let otherUfo = uferService.init("Master", "hehe", journey, [])
-
+        let otherCategory = premiumCategory.init();
+        otherUfo.category = otherCategory;
+        
         // Aun no tiene la propiedad.
-        expect(otherUfo.hasOwnProperty('applyDiscount')).toBeFalsy();
+        expect(otherUfo.getCategory().hasOwnProperty('applyDiscount')).toBeFalsy();
+        expect(ufer.getCategory()).not.toHaveProperty('applyDiscount');
 
-        ufer.prepareDiscount(category);
+        //! En los tests se tiene que pasar pero prepareDiscount() actua en el momento
+        //! de settear la categoria en el proto uferService.
+        otherUfo.prepareDiscount(otherCategory);
 
         // Una vez ejecutado el closure si la tiene.
-        expect(category).toHaveProperty('applyDiscount');
+        expect(otherUfo.getCategory()).toHaveProperty('applyDiscount');
 
         // Aun no tiene la propiedad la creara applyDiscount().
-        expect(ufer).not.toHaveProperty('discountPercentage');
+        expect(otherUfo.getCategory()).not.toHaveProperty('discountPercentage');
 
-        category.applyDiscount()
+        otherUfo.getCategory().applyDiscount()
 
         // Ahora si que deberia tenerla.
-        expect(category).toHaveProperty('discountPercentage');
+        expect(otherUfo.getCategory()).toHaveProperty('discountPercentage');
 
         // En este caso esta aplicando categoria premium por lo que
         // el descuento esta entre 10 y 40.
-        expect(category.discountPercentage).toBe(0);     
+        expect(otherUfo.getCategory().discountPercentage).toBe(0);     
     });
 
     test('calculatePrice() from uferServicePrototype', () => {

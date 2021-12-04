@@ -16,7 +16,7 @@ test('init() from ufoVehicle', () => {
 });
 
 
-test('init() from ufoVehicle', () => {
+test('reserveUfo() from ufoVehicle', () => {
     let vehicle = ufoVehicle.init("test", "test", "test", "test");
     let date = new Date(2021, 11, 15);
     

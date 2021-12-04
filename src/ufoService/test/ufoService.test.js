@@ -21,8 +21,6 @@ describe('scope tests serviceCategory prototype', () => {
 
         ufer = uferService.init("Gold", "fresh", journey, []);
         ufer.category = category;
-
-        delete ufer.applyDiscount;
     });
 
 
@@ -124,15 +122,15 @@ describe('scope tests serviceCategory prototype', () => {
             // En este caso al ser categoria Premium y estar en 
             // diciembre se deberia haber aplicado entre el 10% y el 40%
             // de descuento sobre el precio del servicio
-            // (440 con el 40% y 670 con el 10% aplicados).
-            // Por lo que nuestro margen de resultados validos esta entre 440 y 670.
+            // (12024 con el 40% y 18036 con el 10% aplicados).
+            // Por lo que nuestro margen de resultados validos esta entre 12024 y 18036.
             /* Usado anteriormente tanto para revisar valores 
             obtenidos como ver el valor actual de la iteracion en el bucle.
             //console.log(ufer.getPrice());
             //console.log(i);
             */
-            expect(ufer.getPrice()).toBeGreaterThanOrEqual(4224); 
-            expect(ufer.getPrice()).toBeLessThanOrEqual(6336);
+            expect(ufer.getPrice()).toBeGreaterThanOrEqual(12024); 
+            expect(ufer.getPrice()).toBeLessThanOrEqual(18036);
         };
     
 
@@ -141,16 +139,18 @@ describe('scope tests serviceCategory prototype', () => {
         Date.now = jest.fn(() => dateWithoutDiscount);
         
         ufer.calculatePrice();
-        expect(ufer.getPrice()).toBe(7040);
+        expect(ufer.getPrice()).toBe(20040);
+    });
 
-
-        // CASO SE NO APLICA DESCUENTO AL NO TENER CATEGORIA.
+    test('calculatePrice() caso no categoria', () => {
+        // CASO SE NO SE PUEDE CALCULAR PRECIO POR FALTA DE CATEGORIA.
         
         Date.now = jest.fn(() => dateWithDiscount);
-        // Setteamos la propiedad category de ufoService a null.
+        // Setteamos la propiedad category de ufoService a null junto a price para comprobar que no se va a settear un valor.
         ufer.category = null;
+        ufer.price = null;
 
         ufer.calculatePrice();
-        expect(ufer.getPrice()).toBe(7040);
-    });
+        expect(ufer.getPrice()).toBe(null);
+    })
 })

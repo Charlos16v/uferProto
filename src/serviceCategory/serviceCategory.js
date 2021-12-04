@@ -1,8 +1,9 @@
 let serviceCategoryPrototype = {
-    init: function(name, minDiscount, maxDiscount) {
+    init: function(name, minDiscount, maxDiscount, KEYMETERPRICE) {
         this.name = name;
         this.minDiscount = minDiscount;
         this.maxDiscount = maxDiscount;
+        this.KEYMETERPRICE = KEYMETERPRICE;
 
         return this;
     },
@@ -14,6 +15,9 @@ let serviceCategoryPrototype = {
     },
     getMaxDiscount: function () {
         return this.maxDiscount;
+    },
+    getKEYMETERPRICE: function() {
+        return this.KEYMETERPRICE;
     },
     isDiscountMonth: function() {
         // Los meses en las fechas de JavaScript van de 0 a 11.

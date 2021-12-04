@@ -9,13 +9,8 @@ let ufoServicePrototype = {
         this.amenities = amenities;
         this.price;
         this.discountByCategory;
-        //? PENDIENTE DE IMPLEMENTAR SISTEMA DE RESERVAS?
-        //?this.reserved = false;
         // COSTE BASE QUE SE COBRA SI O SI EN EL SERVICIO.
         this.KEYBASECOST = 40;
-
-        //! MOVER A CATEGORY??
-        this.KEYMETERPRICE = 7;
         
         return this;
     },
@@ -40,7 +35,7 @@ let ufoServicePrototype = {
         return this.amenities;
     },
     getKEYMETERPRICE: function() {
-        return this.KEYMETERPRICE;
+        return this.getCategory()?.getKEYMETERPRICE();
     },
     getKEYBASECOST: function() {
         return this.KEYBASECOST;
@@ -57,15 +52,6 @@ let ufoServicePrototype = {
         this.category = category;
         this.prepareDiscount(this.category);
     },
-    /* PENDIENTE IMPLEMENTAR?
-    setReserved: function(value) {
-        this.reserved = value;
-    },
-
-    isReserved: function() {
-        return this.reserved == true;
-    },*/
-
     // Business logic.
     // CLOSURE.
     prepareDiscount: function(category){
@@ -87,6 +73,8 @@ let ufoServicePrototype = {
         // this.applyDiscount = putDiscount();
     },
     calculatePrice: function() {
+        if(this.getCategory() == null) return;
+
         let distance = this.getDistance();
 
         let discountPercentage = this.getCategory()?.applyDiscount()
@@ -104,14 +92,6 @@ let ufoServicePrototype = {
         
     },
 
-    /* PENDIENTE IMPLEMENTAR?
-    reserveUfoService: function() {
-        if (this.isReserved() == false){
-            this.setReserved(true);
-            this.prepareDiscount();
-        }
-    }*/
-    
 };
 
 module.exports = ufoServicePrototype;

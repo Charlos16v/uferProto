@@ -1,7 +1,11 @@
-let ufoService = require('./ufoService/ufoService.js');
-let standardCategory = require('./serviceCategory/types/standardCategory.js');
-let comfortCategory = require('./serviceCategory/types/comfortCategory.js');
-let premiumCategory = require('./serviceCategory/types/premiumCategory.js');
+const ufoService = require('./ufoService/ufoService.js');
+const standardCategory = require('./serviceCategory/types/standardCategory.js');
+const comfortCategory = require('./serviceCategory/types/comfortCategory.js');
+const premiumCategory = require('./serviceCategory/types/premiumCategory.js');
+const journeyService = require('./journey/journey.js');
+
+
+comfortCategory.metodo();
 
 /**
  * Standard, Comfort y Premium son "hijas" de Category, 
@@ -10,9 +14,12 @@ let premiumCategory = require('./serviceCategory/types/premiumCategory.js');
  **/ 
  
 
-// UfoService con Standard
+/* UfoService con Standard
 var standard = standardCategory.init();
-var ufoStandard = ufoService.init("Winga", "Maquinaria pesada", standard);
+var premium = premiumCategory.init();
+var journey = journeyService.init("Murcia Galaxy", "Son Banya", 666);
+
+var ufoStandard = ufoService.init("Winga", "Maquinaria pesada", journey, premium, []);
 
 console.log(ufoStandard.getName());
 
@@ -20,10 +27,10 @@ console.log(ufoStandard.getDescription());
 console.log(ufoStandard.getCategory().getName()); // Metodo de Category
 
 console.log(Object.getPrototypeOf(ufoStandard.getCategory()));
-console.log(ufoStandard.getCategory().calculateDiscount());
-console.log('\n\n\n');
+console.log(ufoStandard.getCategory().getDiscount(new Date(2021, 11, 1)));
+console.log('\n\n\n');*/
 
-
+/*
 // UfoService con Comfort
 var comfort = comfortCategory.init();
 var ufoComfort = ufoService.init("SpicyFlighter", "hehe", comfort);
@@ -52,3 +59,4 @@ console.log(ufoPremium.getCategory().calculateDiscount());
 
 
 
+*/

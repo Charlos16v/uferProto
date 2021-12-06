@@ -1,11 +1,10 @@
 let ufoServicePrototype = {
-    init: function(name, description, journey, amenities){
+    init: function(name, description, journey, category, amenities){
         this.name = name;
         this.description = description;
         this.journey = journey;
 
-        // La categoria la setteamos con el setter.
-        //this.category = category;
+        this.category = category;
         this.amenities = amenities;
         this.price;
         this.discountByCategory;
@@ -50,11 +49,13 @@ let ufoServicePrototype = {
     },
     setCategory: function(category) {
         this.category = category;
-        this.prepareDiscount(this.category);
+        //this.prepareDiscount(this.category);
     },
     // Business logic.
     // CLOSURE.
-    prepareDiscount: function(category){
+    prepareDiscount: function(){
+        let category = this.getCategory();
+
         let putDiscount = function() {
             function applyDiscount() {
                 // Comprobamos antes que el ufoService tenga asignada una category.

@@ -19,7 +19,7 @@ describe('scope tests serviceCategory prototype', () => {
         journey = journeyFactory.init("MurciaGalaxy", "MarbellaFresh", 1000)
         category = premiumCategory.init();
 
-        ufer = uferService.init("Gold", "fresh", journey, []);
+        ufer = uferService.init("Gold", "fresh", journey, category, []);
         ufer.category = category;
     });
 
@@ -50,8 +50,6 @@ describe('scope tests serviceCategory prototype', () => {
         expect(ufer.getCategory().hasOwnProperty('applyDiscount')).toBeFalsy();
         expect(ufer.getCategory()).not.toHaveProperty('applyDiscount');
 
-        //! En los tests se tiene que pasar pero prepareDiscount() actua en el momento
-        //! de settear la categoria en el proto uferService.
         ufer.prepareDiscount(category);
 
         // Una vez ejecutado el closure si la tiene.
@@ -83,8 +81,6 @@ describe('scope tests serviceCategory prototype', () => {
         expect(otherUfo.getCategory().hasOwnProperty('applyDiscount')).toBeFalsy();
         expect(ufer.getCategory()).not.toHaveProperty('applyDiscount');
 
-        //! En los tests se tiene que pasar pero prepareDiscount() actua en el momento
-        //! de settear la categoria en el proto uferService.
         otherUfo.prepareDiscount(otherCategory);
 
         // Una vez ejecutado el closure si la tiene.
@@ -116,7 +112,8 @@ describe('scope tests serviceCategory prototype', () => {
 
         for (let i = 0; i < NRUNS; i++) {
         
-            ufer.setCategory(category);
+            ufer.prepareDiscount(); // Preparamos el descuento, este metodo sera llamado en el momento de reserva del vehiculo con el servicio asociado.
+            
             ufer.calculatePrice();
         
             // En este caso al ser categoria Premium y estar en 

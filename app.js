@@ -1,8 +1,13 @@
 var createError = require('http-errors');
-var express = require('express');
+const express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+
+const errorController = require('./controllers/errorController');
+
+
+//!const promiseMiddleware = require('./middleware/promise.js');
 
 /**
  * setup MongoDB database connection
@@ -13,7 +18,10 @@ var mongoose = require('mongoose');
 //var mongoDB = `mongodb+srv://${process.env.ATLAS_USER}:${process.env.ATLAS_PASSWORD}@cluster0-ud3ms.mongodb.net/pushmees_pullmees?retryWrites=true&w=majority`;
 var mongoDB = `mongodb+srv://ufer:1234@ufercluster.dansj.mongodb.net/UferProto?retryWrites=true&w=majority`;
 
-mongoose.connect(mongoDB, { useNewUrlParser: true , useUnifiedTopology: true});
+mongoose.connect(mongoDB, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
@@ -37,9 +45,23 @@ app.set('view engine', 'pug');
 
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({
+  extended: false
+}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+
+//app.use(promiseMiddleware());
+
+
+/*app.use(function(req, res, next) {
+  res.promise(Promise.reject(createError(err)));
+});*/
+
+app.use(function(err, req, res, next) {
+  res.promise(Promise.reject(err));
+});
 
 
 /**
@@ -48,7 +70,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/serviceCategory', serviceCategoryRouter);
 
+app.use(errorController);
 
+/*
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
@@ -64,5 +88,6 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+*/
 
 module.exports = app;

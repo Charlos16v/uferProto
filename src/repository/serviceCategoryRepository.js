@@ -2,17 +2,20 @@ const ServiceCategory = require('../../models/serviceCategory.js');
 
 var serviceCategoryRepository = (function singleServiceCategoryRepository() {
 
-    const createServiceCategory = function(category){
+    const createServiceCategory = async function (category, next) {
+        //ServiceCategory.create(category); 
+        //newCategory.save(newCategory);
+        let newCategory = new ServiceCategory(category)
+        return new Promise((resolve, reject) => {
+            newCategory.save();
+            resolve(newCategory);
+        })
+    
+}
 
-        ServiceCategory.create(category, function (err, awesome_instance) {
-            if (err) return handleError(err);
-            // saved! 
-        });
-    }
-
-    return {
-        createServiceCategory
-    }
+return {
+    createServiceCategory
+}
 })();
 
 module.exports = serviceCategoryRepository;

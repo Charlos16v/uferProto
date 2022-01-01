@@ -6,6 +6,8 @@ var serviceCategorySchema = new Schema({
     name: {
         type: String,
         required: true,
+        index: true,
+        unique: true
         //maxlength: 100
     },
     minDiscount: {
@@ -20,8 +22,20 @@ var serviceCategorySchema = new Schema({
         type: Number,
         required: true
     }
+}, {
+    collection: 'serviceCategories'
 });
+
+//schema middleware to apply before saving
+serviceCategorySchema.pre('save', async function (next) {
+    next();
+});
+
+
+const ServiceCategory = mongoose.model('ServiceCategory', serviceCategorySchema);
+
+ServiceCategory.createIndexes();
 
 //? TODO: pre y post hooks middlewares?
 
-module.exports = mongoose.model('ServiceCategory', serviceCategorySchema);
+module.exports = ServiceCategory;

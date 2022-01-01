@@ -4,9 +4,10 @@ const serviceCategoryRepository = require('../repository/serviceCategoryReposito
 
 var serviceCategoryServiceLayer = (function service() {
     
-    const createServiceCategory = function(name, min, max, price) {
-        let category = serviceCategoryProto.init(name, min, max, price);
-        serviceCategoryRepository.createServiceCategory(category);
+    const createServiceCategory = function(category, next) {
+        //let category = serviceCategoryProto.init(name, min, max, price);
+        return serviceCategoryRepository.createServiceCategory(category, next)
+        .then();
     };
 
     return {

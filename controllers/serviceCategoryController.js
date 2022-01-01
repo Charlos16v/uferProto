@@ -2,16 +2,19 @@ const serviceCategoryServiceLayer = require('../src/service/serviceCategoryServi
 
 
 var serviceCategoryAPI = (function singleController() {
-    const createServiceCategory = function(req, res) {
-        serviceCategoryServiceLayer.createServiceCategory(
-            req.body.name,
-            req.body.minDiscount,
-            req.body.maxDiscount,
-            req.body.KEYMETERPRICE
+    const createServiceCategory = function (req, res, next) {
+        let category = {
+            name: req.body.name,
+            minDiscount: req.body.minDiscount,
+            maxDiscount: req.body.maxDiscount,
+            KEYMETERPRICE: req.body.KEYMETERPRICE,
+        }
+        let command = serviceCategoryServiceLayer.createServiceCategory(category, next);
+        command.then(
+            res.status(200).send({
+                message: 'ServiceCategory created succesfully!'
+            })
         );
-        res.status(200).send({
-            message: 'ServiceCategory created succesfully!'
-        });
     }
 
     return {

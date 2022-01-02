@@ -4,12 +4,12 @@ let serialize = require('./serializer.js');
 
 const serviceCategoryDataAcces = (function serviceCategoryInMemoryDB() {
     
-        const listServiceCategories = () => {
+        const getAll = () => {
             return Promise.resolve(serialize(SERVICECATEGORYDB));
         };
 
     return {
-        listServiceCategories
+        getAll
     };
 
 })(); 

@@ -8,6 +8,7 @@ let ServiceCategorySchema = new Schema({
   KEYMETERPRICE: Number
 }, {
   versionKey: false, // Quita la propiedad __v de los elementos de la collection.
+  collection: 'serviceCategories', // Forzamos nombre de la collection.
 })
 
 let ServiceCategory = mongoose.model('ServiceCategory', ServiceCategorySchema)

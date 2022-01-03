@@ -6,5 +6,6 @@ const serviceCategoryController = require('../../../controllers/serviceCategoryC
 router
     .get('/serviceCategory', serviceCategoryController.getAll)
     .get('/serviceCategory/:prop/:value', serviceCategoryController.findByProperty)
+    .put('/serviceCategory', serviceCategoryController.addServiceCategory)
 
 module.exports = router;

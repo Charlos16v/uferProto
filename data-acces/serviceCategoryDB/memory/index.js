@@ -1,5 +1,5 @@
 let SERVICECATEGORYDB = require('../../../db/memory/serviceCategoryDB.js');
-let createServiceCategory = require('../../../domain/serviceCategory/serviceCategory.js');
+let serviceCategoryProto = require('../../../domain/serviceCategory/serviceCategory.js');
 let serialize = require('./serializer.js');
 
 const serviceCategoryDataAcces = (function serviceCategoryInMemoryDB() {
@@ -13,9 +13,23 @@ const serviceCategoryDataAcces = (function serviceCategoryInMemoryDB() {
             return Promise.resolve(serialize(serviceCategory))
         };
 
+        const addServiceCategory = (categoryInfo) => {
+            let serviceCategory = serviceCategoryProto.init(categoryInfo.name, categoryInfo.minDiscount, categoryInfo.maxDiscount, categoryInfo.KEYMETERPRICE);
+            let newServiceCategory = {
+                id: SERVICECATEGORYDB.length + 1,
+                name: serviceCategory.name,
+                minDiscount: serviceCategory.minDiscount,
+                maxDiscount: serviceCategory.maxDiscount,
+                KEYMETERPRICE: serviceCategory.KEYMETERPRICE
+            };
+            SERVICECATEGORYDB.push(newServiceCategory);
+            return findByProperty('id', newServiceCategory.id);
+        };
+
     return {
         getAll,
-        findByProperty
+        findByProperty,
+        addServiceCategory
     };
 
 })(); 

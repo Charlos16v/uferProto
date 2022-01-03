@@ -14,16 +14,16 @@ const serviceCategoryController = (function serviceCategory() {
         .then(data => (data != null) ? res.send(data) : res.status(404).send({'message': "Not found"}));
     };
 
-    const addServiceCategory = (req, res, next) => {
-        serviceCategoryDataAcces.addServiceCategory(req.body)
+    const add = (req, res, next) => {
+        serviceCategoryDataAcces.add(req.body)
           .then(data => {
             res.send(data);
           })
           .catch(next)
     };
 
-    const deleteServiceCategoryById = (req, res, next) => {
-        serviceCategoryDataAcces.deleteServiceCategoryById(req.params.id)
+    const deleteById = (req, res, next) => {
+        serviceCategoryDataAcces.deleteById(req.params.id)
             .then(data => {
                 res.send(data);
             })
@@ -33,8 +33,8 @@ const serviceCategoryController = (function serviceCategory() {
     return {
         getAll,
         findByProperty,
-        addServiceCategory,
-        deleteServiceCategoryById
+        add,
+        deleteById
     };
     
 })();

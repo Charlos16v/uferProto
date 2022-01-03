@@ -13,7 +13,7 @@ const serviceCategoryDataAcces = (function serviceCategoryInMemoryDB() {
             return Promise.resolve(serialize(serviceCategory))
         };
 
-        const addServiceCategory = (categoryInfo) => {
+        const add = (categoryInfo) => {
             let serviceCategory = serviceCategoryProto.init(categoryInfo.name, categoryInfo.minDiscount, categoryInfo.maxDiscount, categoryInfo.KEYMETERPRICE);
             let newServiceCategory = {
                 id: SERVICECATEGORYDB.length + 1,
@@ -26,7 +26,7 @@ const serviceCategoryDataAcces = (function serviceCategoryInMemoryDB() {
             return findByProperty('id', newServiceCategory.id);
         };
 
-        const deleteServiceCategoryById = (id) => {
+        const deleteById = (id) => {
             return findByProperty('id', id)
               .then(cat => {
                 if (cat.id == id) {
@@ -45,8 +45,8 @@ const serviceCategoryDataAcces = (function serviceCategoryInMemoryDB() {
     return {
         getAll,
         findByProperty,
-        addServiceCategory,
-        deleteServiceCategoryById
+        add,
+        deleteById
     };
 
 })(); 

@@ -6,7 +6,7 @@ const serviceCategoryController = require('../../../controllers/serviceCategoryC
 router
     .get('/serviceCategory', serviceCategoryController.getAll)
     .get('/serviceCategory/:prop/:value', serviceCategoryController.findByProperty)
-    .put('/serviceCategory', serviceCategoryController.addServiceCategory)
-    .delete('/serviceCategory/:id', serviceCategoryController.deleteServiceCategoryById)
+    .put('/serviceCategory', serviceCategoryController.add)
+    .delete('/serviceCategory/:id', serviceCategoryController.deleteById)
 
 module.exports = router;

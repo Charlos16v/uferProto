@@ -13,19 +13,19 @@ const serviceCategoryDataAcces = (function serviceCategoryMongoDB() {
         
     };
 
-    const addServiceCategory = (categoryInfo) => {
+    const add = (categoryInfo) => {
         
     };
 
-    const deleteServiceCategoryById = (id) => {
+    const deleteById = (id) => {
 
     };
 
 return {
     getAll,
     findByProperty,
-    addServiceCategory,
-    deleteServiceCategoryById
+    add,
+    deleteById
 };
 
 })();

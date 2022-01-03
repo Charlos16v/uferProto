@@ -4,6 +4,8 @@ module.exports = {
   NODE_ENV: process.env.NODE_ENV,
   PORT: process.env.PORT,
   mongo: {
+    MONGO_CLUSTER: process.env.MONGO_CLUSTER,
+    MONGO_DB: process.env.MONGO_DB,
     MONGO_USER: process.env.MONGO_USER,
     MONGO_PW: process.env.MONGO_PW
   },

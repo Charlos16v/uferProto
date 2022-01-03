@@ -4,6 +4,7 @@ const router = express.Router();
 const serviceCategoryController = require('../../../controllers/serviceCategoryController');
 
 router
-    .get('/serviceCategory', serviceCategoryController.index)
+    .get('/serviceCategory', serviceCategoryController.getAll)
+    .get('/serviceCategory/:prop/:value', serviceCategoryController.findByProperty)
 
 module.exports = router;

@@ -8,8 +8,14 @@ const serviceCategoryDataAcces = (function serviceCategoryInMemoryDB() {
             return Promise.resolve(serialize(SERVICECATEGORYDB));
         };
 
+        const findByProperty = (prop, val) => {
+            let serviceCategory = SERVICECATEGORYDB.find(cat => cat[prop] == val)
+            return Promise.resolve(serialize(serviceCategory))
+        };
+
     return {
-        getAll
+        getAll,
+        findByProperty
     };
 
 })(); 

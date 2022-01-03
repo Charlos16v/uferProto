@@ -1,7 +1,8 @@
 let {
     getAll,
     findByProperty,
-    addServiceCategory
+    addServiceCategory,
+    deleteServiceCategoryById
   } 
   = require('./memory/index.js') // switch out db as required
   // = require('./mongo/index.js')
@@ -11,7 +12,8 @@ let {
   let serviceCategoryDB = {
     getAll,
     findByProperty,
-    addServiceCategory
+    addServiceCategory,
+    deleteServiceCategoryById
   }
   
   module.exports = serviceCategoryDB

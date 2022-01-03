@@ -26,10 +26,27 @@ const serviceCategoryDataAcces = (function serviceCategoryInMemoryDB() {
             return findByProperty('id', newServiceCategory.id);
         };
 
+        const deleteServiceCategoryById = (id) => {
+            return findByProperty('id', id)
+              .then(cat => {
+                if (cat.id == id) {
+                    SERVICECATEGORYDB = SERVICECATEGORYDB.filter(cat => cat.id != id)
+                  return {
+                    id,
+                    status: 'success'
+                  }
+                }
+                return {
+                  status: 'fail'
+                }
+              })
+        };
+
     return {
         getAll,
         findByProperty,
-        addServiceCategory
+        addServiceCategory,
+        deleteServiceCategoryById
     };
 
 })(); 

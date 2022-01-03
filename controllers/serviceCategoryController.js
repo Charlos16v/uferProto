@@ -17,15 +17,24 @@ const serviceCategoryController = (function serviceCategory() {
     const addServiceCategory = (req, res, next) => {
         serviceCategoryDataAcces.addServiceCategory(req.body)
           .then(data => {
-            res.send(data)
+            res.send(data);
           })
           .catch(next)
+    };
+
+    const deleteServiceCategoryById = (req, res, next) => {
+        serviceCategoryDataAcces.deleteServiceCategoryById(req.params.id)
+            .then(data => {
+                res.send(data);
+            })
+            .catch(next)
     };
 
     return {
         getAll,
         findByProperty,
-        addServiceCategory
+        addServiceCategory,
+        deleteServiceCategoryById
     };
     
 })();

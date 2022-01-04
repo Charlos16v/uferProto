@@ -1,10 +1,12 @@
 let mongoose = require('mongoose')
+const ObjectId = require('mongodb').ObjectId;
 let ServiceCategory = require('../models/serviceCategory.js')
 let config = require('../../../config')
 
 // Seeder using async await
 let seedDatabase = async function () {
   let standard = {
+    _id: ObjectId("61ad67901dddd599e1d31e9d"),
     name: 'Standard',
     minDiscount: 10,
     maxDiscount: 7,
@@ -12,6 +14,7 @@ let seedDatabase = async function () {
   }
 
   let comfort = {
+    _id: ObjectId("61ae6f5c0e9305ffcae3a986"),
     name: 'Comfort',
     minDiscount: 15,
     maxDiscount: 25,
@@ -19,6 +22,7 @@ let seedDatabase = async function () {
   }
 
   let premium = {
+    _id: ObjectId("61aeab0c01ea7ea815ca8259"),
     name: "Premium",
     minDiscount: 10,
     maxDiscount: 40,

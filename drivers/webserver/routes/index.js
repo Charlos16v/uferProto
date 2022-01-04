@@ -3,6 +3,7 @@ const router = express.Router();
 
 const serviceCategoryController = require('../../../controllers/serviceCategoryController');
 const journeyController = require('../../../controllers/journeyController');
+const ufoServiceController = require('../../../controllers/ufoServiceController');
 
 // serviceCategory
 router
@@ -16,7 +17,14 @@ router
 .get('/journey', journeyController.getAll)
 .get('/journey/:prop/:value', journeyController.findByProperty)
 .put('/journey', journeyController.add)
-.delete('/journey/:id', journeyController.deleteById)
+.delete('/journey/:id', journeyController.deleteById);
+
+// ufoService
+router
+.get('/ufoService', ufoServiceController.getAll)
+.get('/ufoService/:prop/:value', ufoServiceController.findByProperty)
+.put('/ufoService', ufoServiceController.add)
+.delete('/ufoService/:id', ufoServiceController.deleteById)
 
 
 module.exports = router;

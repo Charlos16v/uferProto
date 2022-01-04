@@ -6,6 +6,7 @@ let config = require('../../../config')
 // Seeder using async await
 let seedDatabase = async function () {
   let gold = {
+    _id: ObjectId("61b0f513646886f408bd0777"),
     name: 'UferGold',
     description: 'The best service',
     journey: ObjectId("61b0f513646886f408bd0731"),

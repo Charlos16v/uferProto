@@ -14,6 +14,10 @@ let ufoVehicle = {
     reserveUfo: function() {
         this.reservation.reserved = true;
         this.reservation.reservationDate = Date.now()
+        this.service.prepareDiscount();
+    },
+    calculateServicePrice: function() {
+        this.service?.calculatePrice();
     }
 }
 

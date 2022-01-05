@@ -1,37 +1,52 @@
-const { expect } = require('@jest/globals');
+const {
+    expect
+} = require('@jest/globals');
 
 const ufoVehicle = require('../ufoVehicle.js');
+const uferService = require('../../ufoService/ufoService.js');
+const journeyFactory = require('../../journey/journey.js');
+const premiumCategory = require('../../serviceCategory/types/premiumCategory.js');
 
-// BASIC TEST
-test('init() from ufoVehicle', () => {
-    let vehicle = ufoVehicle.init("test", "test", "test", "test");
-    expect(vehicle.model).toBe("test");
-    expect(vehicle.brand).toBe("test");
-    expect(vehicle.service).toBe("test");
-    expect(vehicle.driver).toBe("test");
-    expect(vehicle.reservation).toStrictEqual({
-        reserved: false,
-        reservationDate: null,
-    });
-});
+describe('scope tests ufoVehicle prototype', () => {
 
-
-test('reserveUfo() from ufoVehicle', () => {
-    let vehicle = ufoVehicle.init("test", "test", "test", "test");
-    let date = new Date(2021, 11, 15);
-    
-    expect(vehicle.reservation).toStrictEqual({
-        reserved: false,
-        reservationDate: null,
+    // BASIC TEST
+    test('init() from ufoVehicle', () => {
+        let vehicle = ufoVehicle.init("test", "test", "test", "test");
+        expect(vehicle.model).toBe("test");
+        expect(vehicle.brand).toBe("test");
+        expect(vehicle.service).toBe("test");
+        expect(vehicle.driver).toBe("test");
+        expect(vehicle.reservation).toStrictEqual({
+            reserved: false,
+            reservationDate: null,
+        });
     });
 
-    Date.now = jest.fn(() => date);
-    vehicle.reserveUfo();
 
-    expect(vehicle.reservation).toStrictEqual({
-        reserved: true,
-        reservationDate: date,
-    })
+    test('reserveUfo() from ufoVehicle', () => {
+        let journey = journeyFactory.init("MurciaGalaxy", "MarbellaFresh", 1000)
+        let category = premiumCategory.init();
 
+        let uferGold = uferService.init("Gold", "fresh", journey, category, []);
+
+        let vehicle = ufoVehicle.init("test", "test", uferGold, "test");
+
+        let date = new Date(2021, 11, 15);
+
+        expect(vehicle.reservation).toStrictEqual({
+            reserved: false,
+            reservationDate: null,
+        });
+
+        Date.now = jest.fn(() => date);
+        vehicle.reserveUfo();
+
+        expect(vehicle.reservation).toStrictEqual({
+            reserved: true,
+            reservationDate: date,
+        });
+
+        expect(vehicle.service.getCategory()).toHaveProperty('applyDiscount');
+        expect(vehicle.service.getCategory()).not.toHaveProperty('discountPercentage');
+    });
 });
-

@@ -25,14 +25,23 @@ const ufoServiceDataAcces = (function ufoServiceMongoDB() {
         return serialize(doc);
     };
 
-    const add = (journeyInfo) => {
-        let journey = UfoService.init(journeyInfo.startPoint, journeyInfo.endPoint, journeyInfo.distance);
-        let newJourney = {
-            startPoint: journey.startPoint,
-            endPoint: journey.endPoint,
-            distance: journey.distance
+    const add = (ufoServiceInfo) => {
+        let ufoService = ufoServiceProto.init(ufoServiceInfo.name, 
+            ufoServiceInfo.description, ufoServiceInfo.journey, 
+            ufoServiceInfo.serviceCategory, ufoServiceInfo.amenities, 
+            ufoServiceInfo.price, ufoServiceInfo.discountByCategory,
+            ufoServiceInfo.KEYBASECOST);
+        let newUfoService = {
+            name: ufoService.name,
+            description: ufoService.description,
+            journey: ufoService.journey,
+            serviceCategory: ufoService.serviceCategory,
+            amenities: ufoService.amenities,
+            price: ufoService.price,
+            discountByCategory: ufoService.discountByCategory,
+            KEYBASECOST: ufoService.KEYBASECOST
         };
-        return Journey.create(newJourney)
+        return UfoService.create(newUfoService)
             .then(serialize)
     };
 

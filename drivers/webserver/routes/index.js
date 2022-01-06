@@ -4,6 +4,7 @@ const router = express.Router();
 const serviceCategoryController = require('../../../controllers/serviceCategoryController');
 const journeyController = require('../../../controllers/journeyController');
 const ufoServiceController = require('../../../controllers/ufoServiceController');
+const ufoVehicleController = require('../../../controllers/ufoVehicleController');
 
 // serviceCategory
 router
@@ -24,7 +25,14 @@ router
 .get('/ufoService', ufoServiceController.getAll)
 .get('/ufoService/:prop/:value', ufoServiceController.findByProperty)
 .put('/ufoService', ufoServiceController.add)
-.delete('/ufoService/:id', ufoServiceController.deleteById)
+.delete('/ufoService/:id', ufoServiceController.deleteById);
+
+// ufoVehicle
+router
+.get('/ufoVehicle', ufoVehicleController.getAll)
+.get('/ufoVehicle/:prop/:value', ufoVehicleController.findByProperty)
+.put('/ufoVehicle', ufoVehicleController.add)
+.delete('/ufoVehicle/:id', ufoVehicleController.deleteById);
 
 
 module.exports = router;

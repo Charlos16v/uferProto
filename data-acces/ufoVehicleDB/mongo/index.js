@@ -25,15 +25,17 @@ const ufoVehicleDataAcces = (function ufoVehicleMongoDB() {
     };
 
     const add = (ufoVehicleInfo) => {
-        let ufoVehicle = ufoVehicleProto.init(journeyInfo.startPoint, journeyInfo.endPoint, journeyInfo.distance);
+        let ufoVehicle = ufoVehicleProto.init(
+            ufoVehicleInfo.model, ufoVehicleInfo.brand, 
+            ufoVehicleInfo.service, ufoVehicleInfo.driver);
         let newUfoVehicle = {
-            model: journey.model,
-            brand: journey.brand,
-            ufoService: journey.ufoService,
-            driver: newUfoVehicle.driver,
-            reservation: newUfoVehicle.reservation,
+            model: ufoVehicle.model,
+            brand: ufoVehicle.brand,
+            ufoService: ufoVehicle.ufoService,
+            driver: ufoVehicle.driver,
+            reservation: ufoVehicle.reservation,
         };
-        return UfoVehicle.create(newJourney)
+        return UfoVehicle.create(newUfoVehicle)
             .then(serialize)
     };
 

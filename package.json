@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node ./drivers/webserver/server.js",
     "devstart": "nodemon ./drivers/webserver/server.js",
-    "test": "jest --runInBand",
+    "test": "jest --runInBand --forceExit",
     "coverage": "jest --coverage"
   },
   "dependencies": {

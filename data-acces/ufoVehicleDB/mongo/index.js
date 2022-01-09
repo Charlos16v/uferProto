@@ -7,7 +7,12 @@ const ufoVehicleDataAcces = (function ufoVehicleMongoDB() {
     const getAll = () => {
         return UfoVehicle
             .find({})
-            .populate('ufoService')
+            .populate({
+                path: 'ufoService',
+                populate: {
+                    path: 'journey serviceCategory'
+                },
+            })
             .then(serialize)
     };
 
@@ -18,15 +23,34 @@ const ufoVehicleDataAcces = (function ufoVehicleMongoDB() {
         let filter = {
             [prop]: val
         }
-        const query = UfoVehicle.findOne(filter);
+        const query = UfoVehicle.findOne(filter).populate({
+            path: 'ufoService',
+            populate: {
+                path: 'journey serviceCategory'
+            },
+        });
         const doc = await query.exec()
 
         return serialize(doc);
     };
 
+    const update = async (ufoVehicle) => {
+        const query = UfoVehicle.findOne({
+            '_id': ufoVehicle._id
+        }).populate({
+            path: 'ufoService',
+            populate: {
+                path: 'journey serviceCategory'
+            },
+        });
+        const doc = await query.exec();
+        Object.assign(doc, ufoVehicle);
+        return await doc.save();
+    };
+
     const add = (ufoVehicleInfo) => {
         let ufoVehicle = ufoVehicleProto.init(
-            ufoVehicleInfo.model, ufoVehicleInfo.brand, 
+            ufoVehicleInfo.model, ufoVehicleInfo.brand,
             ufoVehicleInfo.service, ufoVehicleInfo.driver);
         let newUfoVehicle = {
             model: ufoVehicle.model,
@@ -57,6 +81,7 @@ const ufoVehicleDataAcces = (function ufoVehicleMongoDB() {
     return {
         getAll,
         findByProperty,
+        update,
         add,
         deleteById
     };

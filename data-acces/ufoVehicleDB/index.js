@@ -2,6 +2,7 @@ let {
     getAll,
     findByProperty,
     add,
+    update,
     deleteById
   } 
   // = require('./memory/index.js') // switch out db as required
@@ -12,6 +13,7 @@ let {
   let journeyDB = {
     getAll,
     findByProperty,
+    update,
     add,
     deleteById
   }

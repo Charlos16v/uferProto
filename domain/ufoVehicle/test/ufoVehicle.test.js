@@ -45,6 +45,16 @@ describe('scope tests ufoVehicle prototype', () => {
             reserved: true,
             reservationDate: date,
         });
+
+        // Al volver a reservar no deberia cambiar nada ya que comprueba que no este reservado ya.
+        // Cambiamos fecha para comprobar que no cambie nada.
+        Date.now = jest.fn(() => new Date);
+        vehicle.reserveUfo();
+
+        expect(vehicle.reservation).toStrictEqual({
+            reserved: true,
+            reservationDate: date,
+        });
     });
 
     test('calculateServicePrice() from ufoVehicle', () => {

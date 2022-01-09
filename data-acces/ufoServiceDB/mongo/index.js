@@ -25,6 +25,15 @@ const ufoServiceDataAcces = (function ufoServiceMongoDB() {
         return serialize(doc);
     };
 
+    const update = async (ufoService) => {
+        const query = UfoService.findOne({
+            '_id': ufoService._id
+        });
+        const doc = await query.exec();
+        Object.assign(doc, ufoService);
+        return await doc.save();
+    };
+
     const add = (ufoServiceInfo) => {
         let ufoService = ufoServiceProto.init(ufoServiceInfo.name, 
             ufoServiceInfo.description, ufoServiceInfo.journey, 
@@ -63,6 +72,7 @@ const ufoServiceDataAcces = (function ufoServiceMongoDB() {
     return {
         getAll,
         findByProperty,
+        update,
         add,
         deleteById
     };

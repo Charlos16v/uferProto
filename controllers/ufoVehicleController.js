@@ -1,4 +1,5 @@
 let ufoVehicleDataAcces = require('../data-acces/ufoVehicleDB/index.js');
+let ufoVehicleServiceLayer = require('../service/ufoVehicleServiceLayer.js');
 
 const ufoVehicleController = (function ufoVehicle() {
 
@@ -30,11 +31,20 @@ const ufoVehicleController = (function ufoVehicle() {
             .catch(next)
     };
 
+    const reserveUfo = (req, res, next) => {
+        ufoVehicleServiceLayer.reserveUfo(req.params.id)
+            .then(data => {
+                res.send(data);
+            })
+            .catch(next)
+    };
+
     return {
         getAll,
         findByProperty,
         add,
-        deleteById
+        deleteById,
+        reserveUfo
     };
     
 })();

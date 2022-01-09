@@ -32,7 +32,8 @@ router
 .get('/ufoVehicle', ufoVehicleController.getAll)
 .get('/ufoVehicle/:prop/:value', ufoVehicleController.findByProperty)
 .put('/ufoVehicle', ufoVehicleController.add)
-.delete('/ufoVehicle/:id', ufoVehicleController.deleteById);
+.delete('/ufoVehicle/:id', ufoVehicleController.deleteById)
+.post('/ufoVehicle/reserve/:id', ufoVehicleController.reserveUfo)
 
 
 module.exports = router;

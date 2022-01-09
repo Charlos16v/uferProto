@@ -22,9 +22,9 @@ let serviceCategoryPrototype = {
     isDiscountMonth: function() {
         // Los meses en las fechas de JavaScript van de 0 a 11.
         // Metodo que duelve true o false dependiendo si no encontramos en diciembre o no.
-        let actualDate = Date.now();
+        let actualDate = new Date(Date.now());
         let actualMonth = actualDate.getMonth();
-        return actualMonth == 11 || 0 ? true : false;
+        return !!(actualMonth == 11 || actualMonth == 0);
     },
     getRandomInteger: function(min, max) {
         return Math.floor(Math.random() * (max - min) ) + min;

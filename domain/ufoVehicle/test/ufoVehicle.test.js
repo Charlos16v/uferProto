@@ -45,8 +45,33 @@ describe('scope tests ufoVehicle prototype', () => {
             reserved: true,
             reservationDate: date,
         });
+    });
+
+    test('calculateServicePrice() from ufoVehicle', () => {
+        let journey = journeyFactory.init("MurciaGalaxy", "MarbellaFresh", 1000)
+        let category = premiumCategory.init();
+
+        let uferGold = uferService.init("Gold", "fresh", journey, category, []);
+
+        let vehicle = ufoVehicle.init("test", "test", uferGold, "test");
+
+        let date = new Date(2021, 11, 15);
+
+        expect(vehicle.reservation).toStrictEqual({
+            reserved: false,
+            reservationDate: null,
+        });
+
+        Date.now = jest.fn(() => date);
+        vehicle.reserveUfo();
+        vehicle.calculateServicePrice();
+
+        expect(vehicle.reservation).toStrictEqual({
+            reserved: true,
+            reservationDate: date,
+        });
 
         expect(vehicle.service.getCategory()).toHaveProperty('applyDiscount');
-        expect(vehicle.service.getCategory()).not.toHaveProperty('discountPercentage');
+        expect(vehicle.service.getCategory()).toHaveProperty('discountPercentage');
     });
 });

@@ -34,6 +34,7 @@ router
 .put('/ufoVehicle', ufoVehicleController.add)
 .delete('/ufoVehicle/:id', ufoVehicleController.deleteById)
 .post('/ufoVehicle/reserve/:id', ufoVehicleController.reserveUfo)
+.post('/ufoVehicle/calculatePrice/:id', ufoVehicleController.calculateServicePrice)
 
 
 module.exports = router;

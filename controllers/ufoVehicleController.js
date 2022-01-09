@@ -39,12 +39,21 @@ const ufoVehicleController = (function ufoVehicle() {
             .catch(next)
     };
 
+    const calculateServicePrice = (req, res, next) => {
+        ufoVehicleServiceLayer.calculateServicePrice(req.params.id)
+            .then(data => {
+                res.send(data);
+            })
+            .catch(next)
+    };
+
     return {
         getAll,
         findByProperty,
         add,
         deleteById,
-        reserveUfo
+        reserveUfo,
+        calculateServicePrice
     };
     
 })();

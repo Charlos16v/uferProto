@@ -6,6 +6,7 @@ module.exports = {
   mongo: {
     MONGO_CLUSTER: process.env.MONGO_CLUSTER,
     MONGO_DB: process.env.MONGO_DB,
+    MONGO_DB_TEST: process.env.MONGO_DB_TEST,
     MONGO_USER: process.env.MONGO_USER,
     MONGO_PW: process.env.MONGO_PW,
     MONGO_DROPANDCREATE: process.env.MONGO_DROPANDCREATE

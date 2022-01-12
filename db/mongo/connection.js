@@ -7,19 +7,17 @@ mongoose.Promise = global.Promise;
 // Set environment variables
 let env = process.env.NODE_ENV;
 
-// if (env === 'production') {
-  // Using mongoose to connect to MLAB database.
 const cluster = config.mongo.MONGO_CLUSTER
-const db = config.mongo.MONGO_DB
 const username = config.mongo.MONGO_USER
 const password = config.mongo.MONGO_PW
-mongoose.connect(`mongodb+srv://${username}:${password}@${cluster}/${db}?retryWrites=true&w=majority`)
+if (env === 'production') {
+  const db = config.mongo.MONGO_DB
+  mongoose.connect(`mongodb+srv://${username}:${password}@${cluster}/${db}?retryWrites=true&w=majority`)
 
-/*} else {
-  mongoose.connect('mongodb://localhost:27017/clean_node'), {
-    useMongoClient: true,
-  };
-}*/
+} else {
+  const db_test = config.mongo.MONGO_DB_TEST
+  mongoose.connect(`mongodb+srv://${username}:${password}@${cluster}/${db_test}?retryWrites=true&w=majority`)
+}
 
 // Signal connection
 mongoose.connection.once('open', function () {

@@ -5,7 +5,9 @@
   "scripts": {
     "start": "node ./drivers/webserver/server.js",
     "devstart": "nodemon ./drivers/webserver/server.js",
-    "test": "jest --runInBand --forceExit",
+    "migrate": "node ./db/mongo/migrate_all.js",
+    "pretest": "cross-env NODE_ENV=test npm run migrate",
+    "test": "cross-env NODE_ENV=test jest --runInBand --forceExit",
     "coverage": "jest --coverage"
   },
   "dependencies": {

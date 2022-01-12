@@ -5,7 +5,9 @@ const routes = require('./routes')
 const config = require('../../config')
 
 // bodyparser
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
 app.use(bodyParser.json());
 
 app.use(routes)
@@ -34,11 +36,14 @@ app.use(function (req, res) {
   });
 });
 
+const env = config.NODE_ENV;
+const PORT = config.PORT || 3000;
 
-const PORT = config.PORT || 3000
+if (env !== 'test') {
+  app.listen(PORT, () => {
+    console.log(`Listening on PORT: ${PORT}`);
+  })
+}
 
-app.listen(PORT, () => {
-  console.log(`Listening on PORT: ${PORT}`);
-})
 
 module.exports = app;

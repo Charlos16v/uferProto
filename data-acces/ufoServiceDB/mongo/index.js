@@ -19,7 +19,9 @@ const ufoServiceDataAcces = (function ufoServiceMongoDB() {
         let filter = {
             [prop]: val
         }
-        const query = UfoService.findOne(filter);
+        const query = UfoService.findOne(filter).populate({
+            path: 'journey serviceCategory'
+        });
         const doc = await query.exec()
 
         return serialize(doc);

@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node ./drivers/webserver/server.js",
-    "devstart": "nodemon ./drivers/webserver/server.js",
+    "devstart": "cross-env NODE_ENV=dev nodemon ./drivers/webserver/server.js",
+    "debug": "cross-env NODE_ENV=dev DEBUG=express:* node drivers/webserver/server.js",
     "migrate": "node ./db/mongo/migrate_all.js",
     "pretest": "cross-env NODE_ENV=test npm run migrate",
     "test": "cross-env NODE_ENV=test jest --runInBand --forceExit",

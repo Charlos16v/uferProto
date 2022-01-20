@@ -24,5 +24,5 @@ const ufoVehicle = (function serviceLayer() {
     
 })();
 
-module.exports = ufoVehicleServiceLayer;
+module.exports = ufoVehicle;
 

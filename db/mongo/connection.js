@@ -14,6 +14,12 @@ if (env === 'production') {
   const db = config.mongo.MONGO_DB
   mongoose.connect(`mongodb+srv://${username}:${password}@${cluster}/${db}?retryWrites=true&w=majority`)
 
+}
+// Now is same as production but can be different.
+if (env === 'dev') {
+  const db = config.mongo.MONGO_DB
+  mongoose.connect(`mongodb+srv://${username}:${password}@${cluster}/${db}?retryWrites=true&w=majority`)
+
 } else {
   const db_test = config.mongo.MONGO_DB_TEST
   mongoose.connect(`mongodb+srv://${username}:${password}@${cluster}/${db_test}?retryWrites=true&w=majority`)

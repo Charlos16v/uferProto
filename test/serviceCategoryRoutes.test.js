@@ -27,8 +27,8 @@ describe("ServiceCategory routes tests.", () => {
         expect(res.get('Content-Type')).toEqual(expect.stringMatching('/json'));
         expect(res.statusCode).toEqual(200);
         expect(res.body).toHaveLength(3);
-        expect(res.body[0]).toHaveProperty('_id', 'name', 'minDiscount', 'maxDiscount', 'KEYMETERPRICE');
-        expect(res.body[0]._id).not.toBeFalsy();
+        expect(res.body[0]).toHaveProperty('id', 'name', 'minDiscount', 'maxDiscount', 'KEYMETERPRICE');
+        expect(res.body[0].id).not.toBeFalsy();
         expect(res.body[0].name).not.toBeFalsy();
         expect(res.body[0].minDiscount).not.toBeFalsy();
         expect(res.body[0].maxDiscount).not.toBeFalsy();
@@ -41,10 +41,10 @@ describe("ServiceCategory routes tests.", () => {
             .get(`/serviceCategory/name/Premium`);
         expect(res.get('Content-Type')).toEqual(expect.stringMatching('/json'));
         expect(res.statusCode).toEqual(200);
-        expect(res.body).toHaveProperty('_id', 'name', 'minDiscount', 'maxDiscount', 'KEYMETERPRICE');
+        expect(res.body).toHaveProperty('id', 'name', 'minDiscount', 'maxDiscount', 'KEYMETERPRICE');
 
-        expect(res.body._id).not.toBeFalsy();
-        expect(res.body._id).toBe('61aeab0c01ea7ea815ca8259');
+        expect(res.body.id).not.toBeFalsy();
+        expect(res.body.id).toBe('61aeab0c01ea7ea815ca8259');
 
         expect(res.body.name).not.toBeFalsy();
         expect(res.body.name).toBe('Premium');
@@ -74,7 +74,7 @@ describe("ServiceCategory routes tests.", () => {
         expect(resAdd.get('Content-Type')).toEqual(expect.stringMatching('/json'));
         expect(resAdd.statusCode).toEqual(200);
 
-        expect(resAdd.body._id).not.toBeFalsy();
+        expect(resAdd.body.id).not.toBeFalsy();
 
         expect(resAdd.body.name).not.toBeFalsy();
         expect(resAdd.body.name).toBe('maquinaria');
@@ -89,7 +89,7 @@ describe("ServiceCategory routes tests.", () => {
         expect(resAdd.body.KEYMETERPRICE).toBe(69);
 
         // Sacamos el id del journey creado para borrarlo.
-        let id = resAdd.body._id;
+        let id = resAdd.body.id;
 
         const resDel = await request(app)
             .delete(`/serviceCategory/${id}`);

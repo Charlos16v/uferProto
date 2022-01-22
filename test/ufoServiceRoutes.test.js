@@ -27,8 +27,8 @@ describe("UfoService routes tests.", () => {
         expect(res.get('Content-Type')).toEqual(expect.stringMatching('/json'));
         expect(res.statusCode).toEqual(200);
         expect(res.body).toHaveLength(1);
-        expect(res.body[0]).toHaveProperty('_id', 'name', 'description', 'journey', 'category', 'amenities', 'KEYBASECOST');
-        expect(res.body[0]._id).not.toBeFalsy();
+        expect(res.body[0]).toHaveProperty('id', 'name', 'description', 'journey', 'category', 'amenities', 'KEYBASECOST');
+        expect(res.body[0].id).not.toBeFalsy();
         expect(res.body[0].name).not.toBeFalsy();
         expect(res.body[0].description).not.toBeFalsy();
         expect(res.body[0].journey).not.toBeFalsy();
@@ -44,10 +44,10 @@ describe("UfoService routes tests.", () => {
             .get(`/ufoService/name/UferGold`);
         expect(res.get('Content-Type')).toEqual(expect.stringMatching('/json'));
         expect(res.statusCode).toEqual(200);
-        expect(res.body).toHaveProperty('_id', 'name', 'description', 'journey', 'category', 'amenities', 'KEYBASECOST');
+        expect(res.body).toHaveProperty('id', 'name', 'description', 'journey', 'category', 'amenities', 'KEYBASECOST');
 
-        expect(res.body._id).not.toBeFalsy();
-        expect(res.body._id).toBe('61b0f513646886f408bd0777');
+        expect(res.body.id).not.toBeFalsy();
+        expect(res.body.id).toBe('61b0f513646886f408bd0777');
 
         expect(res.body.name).not.toBeFalsy();
         expect(res.body.name).toBe('UferGold');

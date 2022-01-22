@@ -28,8 +28,8 @@ describe("Journey routes tests.", () => {
         expect(res.get('Content-Type')).toEqual(expect.stringMatching('/json'));
         expect(res.statusCode).toEqual(200);
         expect(res.body).toHaveLength(2);
-        expect(res.body[0]).toHaveProperty('_id', 'startPoint', 'endPoint', 'distance');
-        expect(res.body[0]._id).not.toBeFalsy();
+        expect(res.body[0]).toHaveProperty('id', 'startPoint', 'endPoint', 'distance');
+        expect(res.body[0].id).not.toBeFalsy();
         expect(res.body[0].startPoint).not.toBeFalsy();
     });
 
@@ -38,10 +38,10 @@ describe("Journey routes tests.", () => {
             .get(`/journey/startPoint/MurciaGalaxy`);
         expect(res.get('Content-Type')).toEqual(expect.stringMatching('/json'));
         expect(res.statusCode).toEqual(200);
-        expect(res.body).toHaveProperty('_id', 'startPoint', 'endPoint', 'distance');
+        expect(res.body).toHaveProperty('id', 'startPoint', 'endPoint', 'distance');
 
-        expect(res.body._id).not.toBeFalsy();
-        expect(res.body._id).toBe('61b0f513646886f408bd0730');
+        expect(res.body.id).not.toBeFalsy();
+        expect(res.body.id).toBe('61b0f513646886f408bd0730');
 
         expect(res.body.startPoint).not.toBeFalsy();
         expect(res.body.startPoint).toBe('MurciaGalaxy');
@@ -67,7 +67,7 @@ describe("Journey routes tests.", () => {
         expect(resAdd.get('Content-Type')).toEqual(expect.stringMatching('/json'));
         expect(resAdd.statusCode).toEqual(200);
 
-        expect(resAdd.body._id).not.toBeFalsy();
+        expect(resAdd.body.id).not.toBeFalsy();
 
         expect(resAdd.body.startPoint).not.toBeFalsy();
         expect(resAdd.body.startPoint).toBe('maquinaria');
@@ -79,7 +79,7 @@ describe("Journey routes tests.", () => {
         expect(resAdd.body.distance).toBe(1);
 
         // Sacamos el id del journey creado para borrarlo.
-        let id = resAdd.body._id;
+        let id = resAdd.body.id;
 
         const resDel = await request(app)
             .delete(`/journey/${id}`);

@@ -1,10 +1,15 @@
-const journeyProto = require('../../../domain/journey/journey.js');
+// const journeyProto = require('../../../domain/journey/journey.js');
 
 const _serializeSingle = (journeyInfo) => {
-  let journey = journeyProto.init(journeyInfo.startPoint, journeyInfo.endPoint, journeyInfo.distance);
-  journey._id = journeyInfo._id;
+  /* let journey = journeyProto.init(journeyInfo.startPoint, journeyInfo.endPoint, journeyInfo.distance);
+  journey._id = journeyInfo._id; */
 
-  return journey;
+  return {
+    'id': journeyInfo._id,
+    'startPoint': journeyInfo.startPoint,
+    'endPoint': journeyInfo.endPoint,
+    'distance': journeyInfo.distance
+  };
 };
 
 const serializer = (data) => {

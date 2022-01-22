@@ -1,12 +1,12 @@
-const ufoVehicleProto = require('../../../domain/ufoVehicle/ufoVehicle.js');
+// const ufoVehicleProto = require('../../../domain/ufoVehicle/ufoVehicle.js');
 
-const ufoServiceSerializer = require('../../ufoServiceDB/mongo/serializer.js');
-const serviceCategorySerializer = require('../../serviceCategoryDB/mongo/serializer.js');
-const journeySerializer = require('../../journeyDB/mongo/serializer.js');
+// const ufoServiceSerializer = require('../../ufoServiceDB/mongo/serializer.js');
+// const serviceCategorySerializer = require('../../serviceCategoryDB/mongo/serializer.js');
+// const journeySerializer = require('../../journeyDB/mongo/serializer.js');
 
 const _serializeSingle = (ufoVehicleInfo) => {
 
-  let journeyInfo = ufoVehicleInfo.ufoService.journey;
+  /* let journeyInfo = ufoVehicleInfo.ufoService.journey;
   let journey = journeySerializer(journeyInfo);
 
   let serviceCategoryInfo = ufoVehicleInfo.ufoService.serviceCategory;
@@ -17,9 +17,16 @@ const _serializeSingle = (ufoVehicleInfo) => {
 
   let ufoVehicle = ufoVehicleProto.init(ufoVehicleInfo.model, ufoVehicleInfo.brand, ufoService,
     ufoVehicleInfo.driver, ufoVehicleInfo.reservation);
-    ufoVehicle._id = ufoVehicleInfo._id;
+    ufoVehicle._id = ufoVehicleInfo._id; */
 
-  return ufoVehicle;
+  return {
+    'id': ufoVehicleInfo._id,
+    'model': ufoVehicleInfo.model,
+    'brand': ufoVehicleInfo.brand,
+    'ufoService': ufoVehicleInfo.ufoService,
+    'driver': ufoVehicleInfo.driver,
+    'reservation': ufoVehicleInfo.reservation
+  };
 };
 
 const serializer = (data) => {

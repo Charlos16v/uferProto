@@ -1,11 +1,18 @@
-const serviceCategoryProto = require('../../../domain/serviceCategory/serviceCategory.js');
+// const serviceCategoryProto = require('../../../domain/serviceCategory/serviceCategory.js');
 
 const _serializeSingle = (serviceCategoryInfo) => {
-  let serviceCategory = serviceCategoryProto.init(serviceCategoryInfo.name, serviceCategoryInfo.minDiscount,
-    serviceCategoryInfo.maxDiscount, serviceCategoryInfo.KEYMETERPRICE);
-  serviceCategory._id = serviceCategoryInfo._id;
 
-  return serviceCategory;
+  /* let serviceCategory = serviceCategoryProto.init(serviceCategoryInfo.name, serviceCategoryInfo.minDiscount,
+    serviceCategoryInfo.maxDiscount, serviceCategoryInfo.KEYMETERPRICE);
+  serviceCategory._id = serviceCategoryInfo._id; */
+
+  return {
+    'id': serviceCategoryInfo._id,
+    'name': serviceCategoryInfo.name,
+    'minDiscount': serviceCategoryInfo.minDiscount,
+    'maxDiscount': serviceCategoryInfo.maxDiscount,
+    'KEYMETERPRICE': serviceCategoryInfo.KEYMETERPRICE
+  };
 };
 
 const serializer = (data) => {

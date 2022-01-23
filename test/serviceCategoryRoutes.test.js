@@ -96,5 +96,11 @@ describe("ServiceCategory routes tests.", () => {
 
         expect(resDel.get('Content-Type')).toEqual(expect.stringMatching('/json'));
         expect(resDel.statusCode).toEqual(200);
+
+        const resGetAll = await request(app)
+            .get(`/serviceCategory`);
+        expect(resGetAll.get('Content-Type')).toEqual(expect.stringMatching('/json'));
+        expect(resGetAll.statusCode).toEqual(200);
+        expect(resGetAll.body).toHaveLength(3);
     });
 });

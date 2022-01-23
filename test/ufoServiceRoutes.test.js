@@ -35,7 +35,7 @@ describe("UfoService routes tests.", () => {
         expect(res.body[0].category).not.toBeFalsy();
         expect(res.body[0].amenities).not.toBeFalsy();
         expect(res.body[0].KEYBASECOST).not.toBeFalsy();
-        
+
 
     });
 
@@ -83,12 +83,14 @@ describe("UfoService routes tests.", () => {
         expect(res.body.KEYBASECOST).toBe(40);
     });
 
-    /*test("Test add and delete /ufoService", async () => {
+    test("Test add and delete /ufoService", async () => {
         let body = {
-            "name": "maquinaria",
-            "minDiscount": 1,
-            "maxDiscount": 1,
-            "KEYMETERPRICE": 69
+            "name": "test",
+            "description": "test",
+            "journey": "61b0f513646886f408bd0731",
+            "serviceCategory": "61aeab0c01ea7ea815ca8259",
+            "amenities": ["kitkat", "cola"],
+            "KEYBASECOST": 40
         };
 
         const resAdd = await request(app)
@@ -98,27 +100,39 @@ describe("UfoService routes tests.", () => {
         expect(resAdd.get('Content-Type')).toEqual(expect.stringMatching('/json'));
         expect(resAdd.statusCode).toEqual(200);
 
-        expect(resAdd.body._id).not.toBeFalsy();
+        expect(resAdd.body.id).not.toBeFalsy();
 
         expect(resAdd.body.name).not.toBeFalsy();
-        expect(resAdd.body.name).toBe('maquinaria');
+        expect(resAdd.body.name).toBe('test');
 
-        expect(resAdd.body.minDiscount).not.toBeFalsy();
-        expect(resAdd.body.minDiscount).toBe(1);
+        expect(resAdd.body.description).not.toBeFalsy();
+        expect(resAdd.body.description).toBe('test');
 
-        expect(resAdd.body.maxDiscount).not.toBeFalsy();
-        expect(resAdd.body.maxDiscount).toBe(1);
+        expect(resAdd.body.journey).not.toBeFalsy();
+        expect(resAdd.body.journey).toBe('61b0f513646886f408bd0731');
 
-        expect(resAdd.body.KEYMETERPRICE).not.toBeFalsy();
-        expect(resAdd.body.KEYMETERPRICE).toBe(69);
+        expect(resAdd.body.category).not.toBeFalsy();
+        expect(resAdd.body.category).toBe('61aeab0c01ea7ea815ca8259');
+
+        expect(resAdd.body.amenities).not.toBeFalsy();
+        expect(resAdd.body.amenities).toStrictEqual(["kitkat", "cola"]);
+
+        expect(resAdd.body.KEYBASECOST).not.toBeFalsy();
+        expect(resAdd.body.KEYBASECOST).toBe(40);
 
         // Sacamos el id del journey creado para borrarlo.
-        let id = resAdd.body._id;
+        let id = resAdd.body.id;
 
         const resDel = await request(app)
-            .delete(`/serviceCategory/${id}`);
+            .delete(`/ufoService/${id}`);
 
         expect(resDel.get('Content-Type')).toEqual(expect.stringMatching('/json'));
         expect(resDel.statusCode).toEqual(200);
-    });*/
+
+        const resGetAll = await request(app)
+            .get(`/ufoService`);
+        expect(resGetAll.get('Content-Type')).toEqual(expect.stringMatching('/json'));
+        expect(resGetAll.statusCode).toEqual(200);
+        expect(resGetAll.body).toHaveLength(1);
+    });
 });

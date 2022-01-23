@@ -1,4 +1,4 @@
-let ufoServiceDataAcces = require('../data-acces/ufoServiceDB/index.js');
+let ufoServiceDataAcces = require('../data-access/ufoServiceDB/index.js');
 let ufoServiceServiceLayer = require('../service/ufoService.js');
 
 const ufoServiceController = (function ufoService() {

@@ -1,4 +1,4 @@
-let ufoVehicleDataAcces = require('../data-acces/ufoVehicleDB/index.js');
+let ufoVehicleDataAcces = require('../data-access/ufoVehicleDB/index.js');
 let ufoVehicleServiceLayer = require('../service/ufoVehicle.js');
 
 const ufoVehicleController = (function ufoVehicle() {

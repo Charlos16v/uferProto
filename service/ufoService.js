@@ -1,6 +1,6 @@
-let serviceCategoryDataAcces = require('../data-acces/serviceCategoryDB/index.js');
-let journeyDataAcces = require('../data-acces/journeyDB/index.js');
-let ufoServiceDataAcces = require('../data-acces/ufoServiceDB/index.js');
+let serviceCategoryDataAcces = require('../data-access/serviceCategoryDB/index.js');
+let journeyDataAcces = require('../data-access/journeyDB/index.js');
+let ufoServiceDataAcces = require('../data-access/ufoServiceDB/index.js');
 
 const ufoService = (function serviceLayer() {
 

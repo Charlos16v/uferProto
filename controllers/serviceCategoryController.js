@@ -1,4 +1,4 @@
-let serviceCategoryDataAcces = require('../data-acces/serviceCategoryDB/index.js');
+let serviceCategoryDataAcces = require('../data-access/serviceCategoryDB/index.js');
 
 const serviceCategoryController = (function serviceCategory() {
 

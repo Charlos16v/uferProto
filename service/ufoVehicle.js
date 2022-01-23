@@ -1,11 +1,12 @@
-let ufoVehicleDataAcces = require('../data-acces/ufoVehicleDB/index.js');
-let ufoServiceDataAcces = require('../data-acces/ufoServiceDB/index.js');
+let ufoVehicleDataAcces = require('../data-access/ufoVehicleDB/index.js');
+let ufoServiceDataAcces = require('../data-access/ufoServiceDB/index.js');
 let ufoVehicleProto = require('../domain/ufoVehicle/ufoVehicle.js');
 
 const ufoVehicle = (function serviceLayer() {
 
     const reserveUfo = async (id) => {
         let ufoVehicle = await ufoVehicleDataAcces.findByProperty('id', id);
+        ufoVehicle = ufoVehicleProto.init()
         ufoVehicle.reserveUfo();
         return ufoVehicleDataAcces.update(ufoVehicle);
     };

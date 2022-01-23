@@ -1,4 +1,4 @@
-let journeyDataAcces = require('../data-acces/journeyDB/index.js');
+let journeyDataAcces = require('../data-access/journeyDB/index.js');
 
 const journeyController = (function journey() {
 

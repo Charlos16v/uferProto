@@ -1,4 +1,5 @@
 let ufoServiceDataAcces = require('../data-acces/ufoServiceDB/index.js');
+let ufoServiceServiceLayer = require('../service/ufoService.js');
 
 const ufoServiceController = (function ufoService() {
 
@@ -15,7 +16,7 @@ const ufoServiceController = (function ufoService() {
     };
 
     const add = (req, res, next) => {
-        ufoServiceDataAcces.add(req.body)
+        ufoServiceServiceLayer.add(req.body)
           .then(data => {
             res.send(data);
           })

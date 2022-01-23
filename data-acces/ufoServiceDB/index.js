@@ -10,7 +10,7 @@ let {
   // = require('./pg/index.js')
   
   
-  let journeyDB = {
+  let ufoServiceDB = {
     getAll,
     findByProperty,
     update,
@@ -18,5 +18,5 @@ let {
     deleteById
   }
   
-  module.exports = journeyDB
+  module.exports = ufoServiceDB;
   

@@ -7,9 +7,10 @@ const ufoServiceDataAcces = (function ufoServiceMongoDB() {
     const getAll = () => {
         return UfoService
             .find({})
-            .populate('journey')
-            .populate('serviceCategory')
-            .then(serialize)
+            .populate({
+                path: 'journey serviceCategory'
+            })
+            .then(serialize);
     };
 
     const findByProperty = async (prop, val) => {
@@ -46,7 +47,7 @@ const ufoServiceDataAcces = (function ufoServiceMongoDB() {
             name: ufoService.name,
             description: ufoService.description,
             journey: ufoService.journey,
-            serviceCategory: ufoService.serviceCategory,
+            serviceCategory: ufoService.category,
             amenities: ufoService.amenities,
             price: ufoService.price,
             discountByCategory: ufoService.discountByCategory,

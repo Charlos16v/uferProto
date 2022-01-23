@@ -36,62 +36,65 @@ describe("UfoVehicle routes tests.", () => {
         expect(res.body[0].reservation).not.toBeFalsy();
     });
 
-    /*test("Test findByProperty /ufoService", async () => {
+    test("Test findByProperty /ufoVehicle", async () => {
         const res = await request(app)
-            .get(`/ufoService/name/UferGold`);
+            .get(`/ufoVehicle/model/XXX`);
         expect(res.get('Content-Type')).toEqual(expect.stringMatching('/json'));
         expect(res.statusCode).toEqual(200);
-        expect(res.body).toHaveProperty('id', 'name', 'description', 'journey', 'category', 'amenities', 'KEYBASECOST');
+        expect(res.body).toHaveProperty('id', 'model', 'brand', 'ufoService', 'driver', 'reservation');
 
         expect(res.body.id).not.toBeFalsy();
-        expect(res.body.id).toBe('61b0f513646886f408bd0777');
+        expect(res.body.id).toBe('61b0f513646886f408bd0888');
 
-        expect(res.body.name).not.toBeFalsy();
-        expect(res.body.name).toBe('UferGold');
+        expect(res.body.model).not.toBeFalsy();
+        expect(res.body.model).toBe('UferGold');
 
-        expect(res.body.description).not.toBeFalsy();
-        expect(res.body.description).toBe('The best service');
+        expect(res.body.brand).not.toBeFalsy();
+        expect(res.body.brand).toBe('The best service');
 
-        expect(res.body.journey).not.toBeFalsy();
-        expect(res.body.journey).toStrictEqual({
-            "_id": "61b0f513646886f408bd0731",
-            "startPoint": "GalicianAlps",
-            "endPoint": "MarbellaFresh",
-            "distance": 1440
+        expect(res.body.ufoService).not.toBeFalsy();
+        expect(res.body.ufoService).toStrictEqual({
+            _id: "61b0f513646886f408bd0777",
+            name: 'UferGold',
+            description: 'The best service',
+            journey: {
+                _id: "61b0f513646886f408bd0731",
+                startPoint: 'GalicianAlps',
+                endPoint: 'MarbellaFresh',
+                distance: 1440
+            },
+            serviceCategory: {
+                _id: "61aeab0c01ea7ea815ca8259",
+                name: "Premium",
+                minDiscount: 10,
+                maxDiscount: 40,
+                KEYMETERPRICE: 20
+            },
+            amenities: ['kitkat', 'cola'],
+            KEYBASECOST: 40
         });
 
-        expect(res.body.category).not.toBeFalsy();
-        expect(res.body.category).toStrictEqual({
-            "_id": "61aeab0c01ea7ea815ca8259",
-            "name": "Premium",
-            "minDiscount": 10,
-            "maxDiscount": 40,
-            "KEYMETERPRICE": 20
+        expect(res.body.driver).not.toBeFalsy();
+        expect(res.body.driver).toBe('MasterMachine');
+
+        expect(res.body.reservation).not.toBeFalsy();
+        expect(res.body.reservation).toStrictEqual({
+            reserved: false,
+            reservationDate: null
         });
-
-        expect(res.body.amenities).not.toBeFalsy();
-        expect(res.body.amenities).toHaveLength(2);
-        expect(res.body.amenities).toStrictEqual([
-            "kitkat",
-            "cola"
-        ]);
-
-        expect(res.body.KEYBASECOST).not.toBeFalsy();
-        expect(res.body.KEYBASECOST).toBe(40);
     });
 
-    test("Test add and delete /ufoService", async () => {
+    
+    test("Test add and delete /ufoVehicle", async () => {
         let body = {
-            "name": "test",
-            "description": "test",
-            "journey": "61b0f513646886f408bd0731",
-            "serviceCategory": "61aeab0c01ea7ea815ca8259",
-            "amenities": ["kitkat", "cola"],
-            "KEYBASECOST": 40
+            model: 'test',
+            brand: 'test',
+            ufoService: "61b0f513646886f408bd0999",
+            driver: 'testDriver'
         };
 
         const resAdd = await request(app)
-            .put(`/ufoService`)
+            .put(`/ufoVehicle`)
             .send(body);
 
         expect(resAdd.get('Content-Type')).toEqual(expect.stringMatching('/json'));
@@ -99,37 +102,37 @@ describe("UfoVehicle routes tests.", () => {
 
         expect(resAdd.body.id).not.toBeFalsy();
 
-        expect(resAdd.body.name).not.toBeFalsy();
-        expect(resAdd.body.name).toBe('test');
+        expect(resAdd.body.model).not.toBeFalsy();
+        expect(resAdd.body.model).toBe('test');
 
-        expect(resAdd.body.description).not.toBeFalsy();
-        expect(resAdd.body.description).toBe('test');
+        expect(resAdd.body.brand).not.toBeFalsy();
+        expect(resAdd.body.brand).toBe('test');
 
-        expect(resAdd.body.journey).not.toBeFalsy();
-        expect(resAdd.body.journey).toBe('61b0f513646886f408bd0731');
+        expect(resAdd.body.ufoService).not.toBeFalsy();
+        expect(resAdd.body.ufoService).toBe('61b0f513646886f408bd0999');
 
-        expect(resAdd.body.category).not.toBeFalsy();
-        expect(resAdd.body.category).toBe('61aeab0c01ea7ea815ca8259');
+        expect(resAdd.body.testDriver).not.toBeFalsy();
+        expect(resAdd.body.testDriver).toBe('testDriver');
 
-        expect(resAdd.body.amenities).not.toBeFalsy();
-        expect(resAdd.body.amenities).toStrictEqual(["kitkat", "cola"]);
-
-        expect(resAdd.body.KEYBASECOST).not.toBeFalsy();
-        expect(resAdd.body.KEYBASECOST).toBe(40);
+        expect(resAdd.body.reservation).not.toBeFalsy();
+        expect(resAdd.body.reservation).toStrictEqual({
+            reserved: false,
+            reservationDate: null
+        });
 
         // Sacamos el id del journey creado para borrarlo.
         let id = resAdd.body.id;
 
         const resDel = await request(app)
-            .delete(`/ufoService/${id}`);
+            .delete(`/ufoVehicle/${id}`);
 
         expect(resDel.get('Content-Type')).toEqual(expect.stringMatching('/json'));
         expect(resDel.statusCode).toEqual(200);
 
         const resGetAll = await request(app)
-            .get(`/ufoService`);
+            .get(`/ufoVehicle`);
         expect(resGetAll.get('Content-Type')).toEqual(expect.stringMatching('/json'));
         expect(resGetAll.statusCode).toEqual(200);
         expect(resGetAll.body).toHaveLength(1);
-    });*/
+    });
 });

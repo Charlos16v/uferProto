@@ -137,12 +137,16 @@ describe("UfoVehicle routes tests.", () => {
     });
 
     test("Test reserveUfo /ufoVehicle", async () => {
+
+        // CASE CAN RESERVE
         let date = new Date(2021, 11, 15); // "2021-12-14T23:00:00.000Z"
         Date.now = jest.fn(() => date);
 
         const res = await request(app)
             .post(`/ufoVehicle/reserve/61b0f513646886f408bd0888`);
         expect(res.get('Content-Type')).toEqual(expect.stringMatching('/json'));
+        expect(res.statusCode).toEqual(200);
+
         expect(res.body).toHaveProperty('_id', 'model', 'brand', 'ufoService', 'driver', 'reservation');
 
         expect(res.body._id).not.toBeFalsy();
@@ -183,6 +187,20 @@ describe("UfoVehicle routes tests.", () => {
         expect(res.body.reservation).toStrictEqual({
             reserved: true,
             reservationDate: "2021-12-14T23:00:00.000Z"
+        });
+
+        // CASE CAN'T RESERVE (Already reserved).
+        const resFail = await request(app)
+            .post(`/ufoVehicle/reserve/61b0f513646886f408bd0888`);
+        expect(resFail.get('Content-Type')).toEqual(expect.stringMatching('/json'));
+        expect(resFail.statusCode).toEqual(500);
+
+        expect(resFail.body).toHaveProperty('statusCode', 500);
+        expect(resFail.body).toHaveProperty('message', "The ufoVehicle is already reserved.");
+
+        expect(resFail.body).toStrictEqual({
+            statusCode: 500,
+            message: "The ufoVehicle is already reserved."
         });
     });
 });

@@ -1,6 +1,7 @@
-let ufoVehicleDataAcces = require('../data-access/ufoVehicleDB/index.js');
-let ufoServiceDataAcces = require('../data-access/ufoServiceDB/index.js');
-let ufoVehicleProto = require('../domain/ufoVehicle/ufoVehicle.js');
+const ufoVehicleDataAcces = require('../data-access/ufoVehicleDB/index.js');
+const ufoServiceDataAcces = require('../data-access/ufoServiceDB/index.js');
+const ufoVehicleProto = require('../domain/ufoVehicle/ufoVehicle.js');
+const ufoVehicleProtoSerializer = require('../utils/protoSerializers/ufoVehicle.js');
 
 const ufoVehicle = (function serviceLayer() {
 
@@ -24,8 +25,10 @@ const ufoVehicle = (function serviceLayer() {
     };
 
     const reserveUfo = async (id) => {
-        let ufoVehicle = await ufoVehicleDataAcces.findByProperty('id', id);
-        ufoVehicle = ufoVehicleProto.init()
+        let ufoVehicleQuery = await ufoVehicleDataAcces.findByProperty('id', id);
+
+        let ufoVehicle = ufoVehicleProtoSerializer(ufoVehicleQuery);
+
         ufoVehicle.reserveUfo();
         return ufoVehicleDataAcces.update(ufoVehicle);
     };

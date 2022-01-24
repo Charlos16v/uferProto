@@ -1,0 +1,591 @@
+{
+	"info": {
+		"_postman_id": "7cb201b4-7f6d-4518-92d8-683eecb7adff",
+		"name": "UferProto",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "serviceCategory",
+			"item": [
+				{
+					"name": "getAll",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \n}"
+						},
+						"url": {
+							"raw": "http://localhost:3333/serviceCategory",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"serviceCategory"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findByProperty",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \n}"
+						},
+						"url": {
+							"raw": "http://localhost:3333/serviceCategory/name/Premium",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"serviceCategory",
+								"name",
+								"Premium"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Maquinaria\",\n    \"minDiscount\": 0,\n    \"maxDiscount\": 1,\n    \"KEYMETERPRICE\": 69\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3333/serviceCategory",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"serviceCategory"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteById",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \n}"
+						},
+						"url": {
+							"raw": "http://localhost:3333/serviceCategory/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"serviceCategory",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "journey",
+			"item": [
+				{
+					"name": "getAll",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \n}"
+						},
+						"url": {
+							"raw": "http://localhost:3333/journey",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"journey"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findByProperty",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \n}"
+						},
+						"url": {
+							"raw": "http://localhost:3333/journey/startPoint/MurciaGalaxy",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"journey",
+								"startPoint",
+								"MurciaGalaxy"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"startPoint\": \"maquinaria\",\n    \"endPoint\": \"master\",\n    \"distance\": 1\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3333/journey",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"journey"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteById",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \n}"
+						},
+						"url": {
+							"raw": "http://localhost:3333/journey/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"journey",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ufoService",
+			"item": [
+				{
+					"name": "getAll",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \n}"
+						},
+						"url": {
+							"raw": "http://localhost:3333/ufoService",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"ufoService"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findByProperty",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \n}"
+						},
+						"url": {
+							"raw": "http://localhost:3333/ufoService/name/UferGold",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"ufoService",
+								"name",
+								"UferGold"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"test\",\n    \"description\":\"test\",\n    \"journey\": \"61b0f513646886f408bd0730\",\n    \"serviceCategory\": \"61aeab0c01ea7ea815ca8259\",\n    \"amenities\":[\"kitkat\",\"cola\"],\n    \"KEYBASECOST\":40\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3333/ufoService",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"ufoService"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteById",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \n}"
+						},
+						"url": {
+							"raw": "http://localhost:3333/ufoService/61ed27c1d458bf28bd3015f0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"ufoService",
+								"61ed27c1d458bf28bd3015f0"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ufoVehicle",
+			"item": [
+				{
+					"name": "getAll",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \n}"
+						},
+						"url": {
+							"raw": "http://localhost:3333/ufoVehicle",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"ufoVehicle"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findByProperty",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \n}"
+						},
+						"url": {
+							"raw": "http://localhost:3333/ufoVehicle/model/XXX",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"ufoVehicle",
+								"model",
+								"XXX"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"model\": \"test\",\n    \"brand\": \"test\",\n    \"ufoService\": \"61b0f513646886f408bd0777\",\n    \"driver\": \"testDriver\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3333/ufoVehicle",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"ufoVehicle"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteById",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \n}"
+						},
+						"url": {
+							"raw": "http://localhost:3333/ufoVehicle/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"ufoVehicle",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "reserveUfo",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \n}"
+						},
+						"url": {
+							"raw": "http://localhost:3333/ufoVehicle/reserve/61b0f513646886f408bd0888",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"ufoVehicle",
+								"reserve",
+								"61b0f513646886f408bd0888"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "calculatePrice",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \n}"
+						},
+						"url": {
+							"raw": "http://localhost:3333/ufoVehicle/calculatePrice/61b0f513646886f408bd0888",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"ufoVehicle",
+								"calculatePrice",
+								"61b0f513646886f408bd0888"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

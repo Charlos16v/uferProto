@@ -135,4 +135,54 @@ describe("UfoVehicle routes tests.", () => {
         expect(resGetAll.statusCode).toEqual(200);
         expect(resGetAll.body).toHaveLength(1);
     });
+
+    test("Test reserveUfo /ufoVehicle", async () => {
+        let date = new Date(2021, 11, 15); // "2021-12-14T23:00:00.000Z"
+        Date.now = jest.fn(() => date);
+
+        const res = await request(app)
+            .post(`/ufoVehicle/reserve/61b0f513646886f408bd0888`);
+        expect(res.get('Content-Type')).toEqual(expect.stringMatching('/json'));
+        expect(res.body).toHaveProperty('_id', 'model', 'brand', 'ufoService', 'driver', 'reservation');
+
+        expect(res.body._id).not.toBeFalsy();
+        expect(res.body._id).toBe('61b0f513646886f408bd0888');
+
+        expect(res.body.model).not.toBeFalsy();
+        expect(res.body.model).toBe('XXX');
+
+        expect(res.body.brand).not.toBeFalsy();
+        expect(res.body.brand).toBe('Space');
+
+        expect(res.body.ufoService).not.toBeFalsy();
+        expect(res.body.ufoService).toStrictEqual({
+            _id: "61b0f513646886f408bd0777",
+            name: 'UferGold',
+            description: 'The best service',
+            journey: {
+                _id: "61b0f513646886f408bd0731",
+                startPoint: 'GalicianAlps',
+                endPoint: 'MarbellaFresh',
+                distance: 1440
+            },
+            serviceCategory: {
+                _id: "61aeab0c01ea7ea815ca8259",
+                name: "Premium",
+                minDiscount: 10,
+                maxDiscount: 40,
+                KEYMETERPRICE: 20
+            },
+            amenities: ['kitkat', 'cola'],
+            KEYBASECOST: 40
+        });
+
+        expect(res.body.driver).not.toBeFalsy();
+        expect(res.body.driver).toBe('MasterMachine');
+
+        expect(res.body.reservation).not.toBeFalsy();
+        expect(res.body.reservation).toStrictEqual({
+            reserved: true,
+            reservationDate: "2021-12-14T23:00:00.000Z"
+        });
+    });
 });

@@ -8,7 +8,7 @@
     "debug": "cross-env NODE_ENV=dev DEBUG=express:* node drivers/webserver/server.js",
     "migrate": "node ./db/mongo/migrate_all.js",
     "pretest": "cross-env NODE_ENV=test npm run migrate",
-    "test": "cross-env NODE_ENV=test jest --runInBand --forceExit",
+    "test": "cross-env NODE_ENV=test jest --coverage --runInBand --forceExit",
     "coverage": "jest --coverage"
   },
   "dependencies": {

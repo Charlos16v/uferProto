@@ -203,4 +203,55 @@ describe("UfoVehicle routes tests.", () => {
             message: "The ufoVehicle is already reserved."
         });
     });
+
+    test("Test calculatePrice /ufoVehicle", async () => {
+
+        // CASE CAN CALCULATE PRICE
+        let dateWithDiscount = new Date(2021, 11, 15);
+        Date.now = jest.fn(() => dateWithDiscount);
+
+        const res = await request(app)
+            .post(`/ufoVehicle/calculatePrice/61b0f513646886f408bd0888`);
+        expect(res.get('Content-Type')).toEqual(expect.stringMatching('/json'));
+        expect(res.statusCode).toEqual(200);
+
+        expect(res.body).toHaveProperty('id', 'model', 'brand', 'ufoService', 'driver', 'reservation');
+
+        expect(res.body.id).not.toBeFalsy();
+        expect(res.body.id).toBe('61b0f513646886f408bd0888');
+
+        expect(res.body.model).not.toBeFalsy();
+        expect(res.body.model).toBe('XXX');
+
+        expect(res.body.brand).not.toBeFalsy();
+        expect(res.body.brand).toBe('Space');
+
+        expect(res.body.ufoService).not.toBeFalsy();
+        expect(res.body.ufoService.price).not.toBeFalsy();
+        expect(res.body.ufoService.price).toBeGreaterThanOrEqual(11536);
+        expect(res.body.ufoService.price).toBeLessThanOrEqual(25956);
+
+        expect(res.body.driver).not.toBeFalsy();
+        expect(res.body.driver).toBe('MasterMachine');
+
+        expect(res.body.reservation).not.toBeFalsy();
+        expect(res.body.reservation).toStrictEqual({
+            reserved: true,
+            reservationDate: "2021-12-14T23:00:00.000Z"
+        });
+
+        // CASE CAN'T CALCULATE PRICE (Already calculated).
+        const resFail = await request(app)
+            .post(`/ufoVehicle/calculatePrice/61b0f513646886f408bd0888`);
+        expect(resFail.get('Content-Type')).toEqual(expect.stringMatching('/json'));
+        expect(resFail.statusCode).toEqual(500);
+
+        expect(resFail.body).toHaveProperty('statusCode', 500);
+        expect(resFail.body).toHaveProperty('message', "The price of the ufoService is already calculated for this ufoVehicle.");
+
+        expect(resFail.body).toStrictEqual({
+            statusCode: 500,
+            message: "The price of the ufoService is already calculated for this ufoVehicle."
+        });
+    });
 });

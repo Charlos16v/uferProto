@@ -33,7 +33,7 @@ const ufoVehicle = (function serviceLayer() {
             if (ufoVehicle.reservation.reserved) {
                 throw new Error("The ufoVehicle is already reserved.");
             }
-            
+
             ufoVehicle.reserveUfo();
             return ufoVehicleDataAcces.update(ufoVehicle);
         } catch (error) {
@@ -42,10 +42,30 @@ const ufoVehicle = (function serviceLayer() {
     };
 
     const calculateServicePrice = async (id) => {
-        let ufoVehicle = await ufoVehicleDataAcces.findByProperty('id', id);
-        ufoVehicle.calculateServicePrice();
-        ufoServiceDataAcces.update(ufoVehicle.service);
-        ufoVehicleDataAcces.update(ufoVehicle);
+        try {
+            let ufoVehicleQuery = await ufoVehicleDataAcces.findByProperty('id', id);
+
+            let ufoVehicle = ufoVehicleProtoSerializer(ufoVehicleQuery);
+
+            if (!ufoVehicle.reservation.reserved) {
+                throw new Error("The ufoVehicle has to be reserved before calculate the service price.");
+            }
+
+            if (ufoVehicle.service.price != null) {
+                throw new Error("The price of the ufoService is already calculated for this ufoVehicle.");
+            }
+
+            ufoVehicle.calculateServicePrice();
+
+            await ufoServiceDataAcces.update(ufoVehicle.service);
+
+            ufoVehicle = await ufoVehicleDataAcces.findByProperty('id', id);
+
+            return ufoVehicle;
+            //ufoVehicleDataAcces.update(ufoVehicle);
+        } catch (error) {
+            throw error;
+        }
     };
 
     return {

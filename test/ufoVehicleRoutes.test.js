@@ -47,10 +47,10 @@ describe("UfoVehicle routes tests.", () => {
         expect(res.body.id).toBe('61b0f513646886f408bd0888');
 
         expect(res.body.model).not.toBeFalsy();
-        expect(res.body.model).toBe('UferGold');
+        expect(res.body.model).toBe('XXX');
 
         expect(res.body.brand).not.toBeFalsy();
-        expect(res.body.brand).toBe('The best service');
+        expect(res.body.brand).toBe('Space');
 
         expect(res.body.ufoService).not.toBeFalsy();
         expect(res.body.ufoService).toStrictEqual({
@@ -89,7 +89,7 @@ describe("UfoVehicle routes tests.", () => {
         let body = {
             model: 'test',
             brand: 'test',
-            ufoService: "61b0f513646886f408bd0999",
+            ufoService: "61b0f513646886f408bd0777",
             driver: 'testDriver'
         };
 
@@ -109,10 +109,10 @@ describe("UfoVehicle routes tests.", () => {
         expect(resAdd.body.brand).toBe('test');
 
         expect(resAdd.body.ufoService).not.toBeFalsy();
-        expect(resAdd.body.ufoService).toBe('61b0f513646886f408bd0999');
+        expect(resAdd.body.ufoService).toBe('61b0f513646886f408bd0777');
 
-        expect(resAdd.body.testDriver).not.toBeFalsy();
-        expect(resAdd.body.testDriver).toBe('testDriver');
+        expect(resAdd.body.driver).not.toBeFalsy();
+        expect(resAdd.body.driver).toBe('testDriver');
 
         expect(resAdd.body.reservation).not.toBeFalsy();
         expect(resAdd.body.reservation).toStrictEqual({

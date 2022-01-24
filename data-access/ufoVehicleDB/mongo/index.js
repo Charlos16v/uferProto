@@ -51,11 +51,11 @@ const ufoVehicleDataAcces = (function ufoVehicleMongoDB() {
     const add = (ufoVehicleInfo) => {
         let ufoVehicle = ufoVehicleProto.init(
             ufoVehicleInfo.model, ufoVehicleInfo.brand,
-            ufoVehicleInfo.service, ufoVehicleInfo.driver);
+            ufoVehicleInfo.ufoService, ufoVehicleInfo.driver);
         let newUfoVehicle = {
             model: ufoVehicle.model,
             brand: ufoVehicle.brand,
-            ufoService: ufoVehicle.ufoService,
+            ufoService: ufoVehicle.service,
             driver: ufoVehicle.driver,
             reservation: ufoVehicle.reservation,
         };

@@ -4,6 +4,25 @@ let ufoVehicleProto = require('../domain/ufoVehicle/ufoVehicle.js');
 
 const ufoVehicle = (function serviceLayer() {
 
+    const add = async (ufoVehicleInfo) => {
+        try {
+            const ufoService = await ufoServiceDataAcces.findByProperty('id', ufoVehicleInfo.ufoService);
+            if (!ufoService) {
+                throw new Error("The ufoService doesn't exist.");
+            }
+
+            const data = ufoVehicleDataAcces.add(ufoVehicleInfo);
+
+            if (!data) {
+                throw new Error('It has not been possible to create the ufoVehicle.');
+            }
+
+            return data;
+        } catch (error) {
+            throw error;
+        }
+    };
+
     const reserveUfo = async (id) => {
         let ufoVehicle = await ufoVehicleDataAcces.findByProperty('id', id);
         ufoVehicle = ufoVehicleProto.init()
@@ -19,6 +38,7 @@ const ufoVehicle = (function serviceLayer() {
     }; 
 
     return {
+        add,
         reserveUfo,
         calculateServicePrice
     };

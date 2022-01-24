@@ -16,7 +16,7 @@ const ufoVehicleController = (function ufoVehicle() {
     };
 
     const add = (req, res, next) => {
-        ufoVehicleDataAcces.add(req.body)
+        ufoVehicleServiceLayer.add(req.body)
           .then(data => {
             res.send(data);
           })

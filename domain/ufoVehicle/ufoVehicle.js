@@ -1,12 +1,16 @@
 let ufoVehicle = {
-    init: function (model, brand, service, driver) {
+    init: function (model, brand, service, driver, reservation = null) {
         this.model = model;
         this.brand = brand;
         this.service = service;
         this.driver = driver;
-        this.reservation = {
-            reserved: false,
-            reservationDate: null,
+        if (reservation != null) {
+            this.reservation = reservation;
+        } else {
+            this.reservation = {
+                reserved: false,
+                reservationDate: null,
+            }
         }
 
         return this;
@@ -19,8 +23,8 @@ let ufoVehicle = {
         // this.service.prepareDiscount();
     },
     calculateServicePrice: function () {
-        this.service ?.prepareDiscount();
-        this.service ?.calculatePrice();
+        this.service?.prepareDiscount();
+        this.service?.calculatePrice();
     }
 }
 

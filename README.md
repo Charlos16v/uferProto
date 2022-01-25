@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-# UferProto project
-
-Little web app using OLOO for the business domain logic, and encapsulating that in a nodejs using expressjs server.
-=======
 # UferProto project
 Little web app using OLOO for the business domain logic, and encapsulating that in expressJS using a nodeJS server, also a little CLI UI version for demostrate the clean architecture.
 
@@ -30,5 +25,3 @@ By following clean architecture, you can write software today that can be easily
 ## User Stories
 
 ## Switch DB
-
->>>>>>> origin/develop

@@ -1,0 +1,31 @@
+{
+  "name": "uferproto",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./drivers/webserver/server.js",
+    "devstart": "cross-env NODE_ENV=dev nodemon ./drivers/webserver/server.js",
+    "debug": "cross-env NODE_ENV=dev DEBUG=express:* node drivers/webserver/server.js",
+    "migrate": "node ./db/mongo/migrate_all.js",
+    "pretest": "cross-env NODE_ENV=test npm run migrate",
+    "test": "cross-env NODE_ENV=test jest --coverage --runInBand --forceExit",
+    "coverage": "jest --coverage"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.1",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "dotenv": "^10.0.0",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "mongoose": "^6.0.14",
+    "morgan": "~1.9.1",
+    "pug": "^3.0.2"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "jest": "^27.3.1",
+    "nodemon": "^2.0.15",
+    "supertest": "^6.1.6"
+  }
+}

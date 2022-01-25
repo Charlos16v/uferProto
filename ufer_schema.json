@@ -1,0 +1,31 @@
+{
+    "uferService" : {
+        "_id": {
+            "$oid": "5fd0f16eea6fcf269994fc7a"
+        },
+        "name": "Ufer Gold",
+        "description": "Ufer Gold offers the most luxury experience in the entire galaxy. Includes all the features and amenities you can imagine.",
+        "price": 12000,
+        "journey": {
+            "startPoint": "MurciaGalaxy",
+            "endPoint": "Lepe",
+            "distance": 9999
+        },
+        "category": {
+            "name": "Premium",
+            "minDiscount": 10,
+            "maxDiscount": 40
+        },
+        "amenities": ["WiFi", "Bluetooth", "Tinted Screens", "HiFi Audio System", "A/C", "Champagne Bottle", "Water", "Snacks"]
+    },
+
+
+
+    
+    "notImplemented" :{
+        "privacy": "Private",
+        "seats": "King Size",
+        "propulsion": "Photon Engine",
+        "top_speed": 1080000000
+    }
+}

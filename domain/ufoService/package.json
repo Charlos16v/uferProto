@@ -1,0 +1,22 @@
+{
+  "name": "ufoservice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "ufoService.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Charlos16v/uferProto.git"
+  },
+  "author": "Carlos Uriel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Charlos16v/uferProto/issues"
+  },
+  "homepage": "https://github.com/Charlos16v/uferProto#readme",
+  "devDependencies": {
+    "jest": "^27.3.1"
+  }
+}

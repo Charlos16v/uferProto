@@ -1,12 +1,10 @@
-let journeyDataAcces = require('../data-access/journeyDB/index.js');
+const journeyDataAcces = require('../data-access/journeyDB/index.js');
 
 const journeyController = (function journey() {
 
     const getAll = (req, res, next) => {
         journeyDataAcces.getAll()
-        .then(data => {
-            res.send(data);
-        });
+        .then(data => (data.length > 0) ? res.send(data) : res.status(404).send({'message': "There are no journeys."}));
     };
 
     const findByProperty = (req, res, next) => {

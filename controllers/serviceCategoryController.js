@@ -4,9 +4,7 @@ const serviceCategoryController = (function serviceCategory() {
 
     const getAll = (req, res, next) => {
         serviceCategoryDataAcces.getAll()
-        .then(data => {
-            res.send(data);
-        });
+        .then(data => (data.length > 0) ? res.send(data) : res.status(404).send({'message': "There are no serviceCategories."}));
     };
 
     const findByProperty = (req, res, next) => {

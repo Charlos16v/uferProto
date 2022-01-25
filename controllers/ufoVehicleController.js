@@ -1,13 +1,11 @@
-let ufoVehicleDataAcces = require('../data-access/ufoVehicleDB/index.js');
-let ufoVehicleServiceLayer = require('../service/ufoVehicle.js');
+const ufoVehicleDataAcces = require('../data-access/ufoVehicleDB/index.js');
+const ufoVehicleServiceLayer = require('../service/ufoVehicle.js');
 
 const ufoVehicleController = (function ufoVehicle() {
 
     const getAll = (req, res, next) => {
         ufoVehicleDataAcces.getAll()
-        .then(data => {
-            res.send(data);
-        });
+        .then(data => (data.length > 0) ? res.send(data) : res.status(404).send({'message': "There are no ufoVehicles."}));
     };
 
     const findByProperty = (req, res, next) => {

@@ -1,13 +1,11 @@
-let ufoServiceDataAcces = require('../data-access/ufoServiceDB/index.js');
-let ufoServiceServiceLayer = require('../service/ufoService.js');
+const ufoServiceDataAcces = require('../data-access/ufoServiceDB/index.js');
+const ufoServiceServiceLayer = require('../service/ufoService.js');
 
 const ufoServiceController = (function ufoService() {
 
     const getAll = (req, res, next) => {
         ufoServiceDataAcces.getAll()
-        .then(data => {
-            res.send(data);
-        });
+        .then(data => (data.length > 0) ? res.send(data) : res.status(404).send({'message': "There are no ufoServices."}));
     };
 
     const findByProperty = (req, res, next) => {

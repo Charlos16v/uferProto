@@ -1,5 +1,5 @@
 let args = require('yargs-parser')(process.argv.slice(2))
-let serviceCategoryDB = require('../../data-access/serviceCategoryDB/index.js')
+const serviceCategoryDB = require('../../data-access/serviceCategoryDB/index.js')
 
 let printHelp = function () {
     console.log(`
@@ -17,7 +17,7 @@ if (args.help || !valid) {
     process.exit(1)
 }
 
-// node drivers/cli/index.js --index 
+// NODE_ENV=dev node drivers/cli/index.js --index
 if (args.index) {
     serviceCategoryDB.getAll().then(data => {
         console.log(data);
@@ -25,7 +25,7 @@ if (args.index) {
     })
 }
 
-// node drivers/cli/index.js --show 'Premium'
+// NODE_ENV=dev node drivers/cli/index.js --show 'Premium'
 if (args.show) {
     serviceCategoryDB.findByProperty('name', args.show).then(data => {
         console.log(data);

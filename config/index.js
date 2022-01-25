@@ -12,10 +12,10 @@ module.exports = {
     MONGO_DROPANDCREATE: process.env.MONGO_DROPANDCREATE
   },
   pg: {
-    HOST: process.env.PG_HOST,
-    USER: process.env.PG_USER,
-    DATABASE: process.env.PG_DATABASE,
-    PASSWORD: process.env.PG_PASSWORD,
-    PORT: process.env.PG_PORT
+    PG_HOST: process.env.PG_HOST,
+    PG_USER: process.env.PG_USER,
+    PG_DATABASE: process.env.PG_DATABASE,
+    PG_PASSWORD: process.env.PG_PASSWORD,
+    PG_PORT: process.env.PG_PORT
   }
 }

@@ -1,6 +1,60 @@
 # UferProto project
 Little web app using OLOO for the business domain logic, and encapsulating that in expressJS using a nodeJS server, also a little CLI UI version for demostrate the clean architecture.
 
+[Ufer Website] (https://charlos16v.github.io/proyecto-ufer/index.html)
+
+## Technologies Implemented
+
+- JS
+- Git
+- Node.js
+- NPM
+- Express
+- MongoDB
+- PostgreSQL
+- Knex
+
+## Required dependencies
+
+### Production
+
+- cookie-parser
+- body-parser
+- debug
+- dotenv
+- express
+- http-errors
+- knex
+- mongoose
+- pg
+- morgan
+- node 
+- npm
+
+### Development
+
+- cross-env
+- eslint
+- jest
+- nodemon
+- supertest
+
+
+## User Stories and Business Logic
+
+This application is based on a business of a ufo transport service. Has his own business logic, 
+
+You've got four different modules that you should remember to understand how everything is connected in order to work:
+
+Journey
+ServiceCategory
+UfoService
+UfoVehicle
+
+Every one of the modules has got his basic CRUD operations, CREATE, READ, UPDATE and DELETE.
+
+The logic of the business is based on a gambling society, addicted to chance and gambling, so the prices of the different services are calculated randomly within established margins.
+
 ## Clean Architecture
 > “Your architectures should tell readers about the system, not about the frameworks you used in your system” — Robert C. Martin
 
@@ -16,6 +70,8 @@ It should be:
 
 ![The Clean Architecture diagram](https://blog.cleancoder.com/uncle-bob/images/2012-08-13-the-clean-architecture/CleanArchitecture.jpg)
 
+*Note: this application is different to the Clean Architecture diagram above but attempts to achieve the same outcome.*
+
 In practice, choice of technology should be the last decision you make or code you write (e.g. database, platform, framework).
 
 By following clean architecture, you can write software today that can be easily switched out for different technologies in the future.
@@ -27,7 +83,7 @@ It is a simple API for creating `serviceCategories`, `journeys`, `ufoServices` a
 
 [Click here for github repo.](https://github.com/Charlos16v/uferProto)
 
-*Note: this application is different to the Clean Architecture diagram above but attempts to achieve the same outcome.*
+
 
 ### Software layer overview
 The application is separated into three layers. Inner layers cannot depend on outer layers and outer layers should only depend one layer in:
@@ -41,8 +97,11 @@ The application is separated into three layers. Inner layers cannot depend on ou
 - **Outer Layer**
   - **Drivers**. Represents the UI or interface (Web or CLI). It communicates only with the middle layers.
 
-## How use the app (.env...etc)
+## How use the app:
 
+### Installation
+
+To be able to run this project you just will have to create an account into MongoDB, clone this project and run the command `$ npm i` to install all the required dependencies. Finally, create a `.env` file in the root directory of your project and fill the credentials specified in the `.env` example file that you'll find below.
 
 `.env example file`
 
@@ -63,6 +122,8 @@ PG_DATABASE = exampleDB
 PG_PORT = 5432
 ```
 
+### Run
+For run the application after installation run the command `$ npm run start` for production or `$ npm run devstart` for development.
 
 ### Debug
 #### Visual Studio Code:
@@ -81,7 +142,7 @@ PG_PORT = 5432
 ```
 
 
-## User Stories
+
 
 ## Switch UI
 ```bash
@@ -96,7 +157,7 @@ NODE_ENV=dev node drivers/cli/index.js --del {id}  // Delete ServiceCategory by 
 
 
 ## Switch DB
-
+`/data-access/serviceCategoryDB/index.js`
 ```javascript
 const {
     getAll,
@@ -120,5 +181,30 @@ const {
   
   module.exports = serviceCategoryDB;
 ```
+
+
+## License
+
+MIT License
+
+Copyright (c) 2022 Carlos Uriel Domínguez Ruiz-Díaz
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
   

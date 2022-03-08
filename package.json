@@ -1,7 +1,7 @@
 {
   "name": "uferproto",
   "version": "0.0.0",
-  "private": true,
+  "private": false,
   "scripts": {
     "start": "node ./drivers/webserver/server.js",
     "devstart": "cross-env NODE_ENV=dev nodemon ./drivers/webserver/server.js",
